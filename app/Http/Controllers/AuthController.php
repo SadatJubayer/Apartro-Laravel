@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\AuthRequest;
 
+use App\User;
+
 class AuthController extends Controller
 {
     public function loginView()
