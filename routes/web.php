@@ -11,3 +11,5 @@ Route::get('/', function () {
 // Auth Routes
 Route::get('/login', 'AuthController@loginView');
 Route::post('/login', 'AuthController@login');
+Route::get('/register', 'AuthController@registerView');
+Route::post('/register', 'AuthController@register');

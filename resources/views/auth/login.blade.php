@@ -27,6 +27,7 @@ Login
             @endif
 
 
+
             <form method="POST" action="/auth/login">
                 @csrf
                 <div class="mb-3">
@@ -49,7 +50,7 @@ Login
 
                 <div class="col align-self-center mt-3">
                     Don't have an account?
-                    <a href="/auth/register" class="link-primary ml-2">
+                    <a href="/register" class="link-primary ml-2">
                         Register
                     </a>
                     </p>
