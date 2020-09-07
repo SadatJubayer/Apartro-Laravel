@@ -10,6 +10,8 @@
 <body>
 
     <h5>Server is Up and Running</h5>
+    <a href="/login">Login Here</a>
+
 
 </body>
 

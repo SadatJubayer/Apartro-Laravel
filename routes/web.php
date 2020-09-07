@@ -7,3 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+// Auth Routes
+Route::get('/login', 'AuthController@loginView');
+Route::post('/login', 'AuthController@login');

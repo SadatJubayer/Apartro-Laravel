@@ -1,0 +1,12 @@
+.card a {
+  text-decoration: none;
+  color: white;
+}
+
+.adminCards .card {
+  transition: transform 0.3s ease-in;
+}
+
+.adminCards .card:hover {
+  transform: scale(1.05);
+}
