@@ -22,14 +22,13 @@ Register
 
             <!-- For Error -->
 
-            @if($errors->isEmpty())
-            @else
+            @if($errors->any())
             <div class="alert alert-danger mt-3">
-                <strong> Error </strong>
+                @foreach ($errors->all() as $err)
+                <strong> {{$err}} <br></strong>
+                @endforeach
             </div>
-
             @endif
-
 
             {{-- <% if(typeof success != 'undefined' && success) { %>
             <div class="alert alert-success mt-3" role="alert">
@@ -43,18 +42,20 @@ Register
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input name="username" type="text" class="form-control" id="username" />
+                    <input value="{{old('username')}}" name="username" type="text" class="form-control" id="username" />
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input name="password" type="password" class="form-control" id="password" />
+                    <input value="{{old('password')}}" name="password" type="password" class="form-control"
+                        id="password" />
                     <div class="form-text">
                         At least 6 characters long!
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Re-type Password</label>
-                    <input name="confirmPassword" type="password" class="form-control" id="password" />
+                    <input value="{{old('password_confirmation')}}" name="password_confirmation" type="password"
+                        class="form-control" id="password" />
                 </div>
 
                 <div class="mb-3">
@@ -70,14 +71,16 @@ Register
 
                 <div class="col align-self-center mt-3">
                     Already have an account?
-                    <a href="/auth/login" class="link-primary ml-2">
+                    <a href="/login" class="link-primary ml-2">
                         Log in
                     </a>
-                    </p>
+
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+
 
 @endsection

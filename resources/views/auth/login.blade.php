@@ -19,16 +19,16 @@ Login
         <div class="col-sm-8 col-md-6 col-lg-4 mx-auto border border-secondary p-4">
             <div class="h3 text-center">Login</div>
 
-            @if($errors->isEmpty())
-            @else
+            @if($errors->any())
+
             <div class="alert alert-danger mt-3">
-                <strong> {{$errors->message}} </strong>
+                @foreach ($errors->all() as $err)
+                <strong> {{$err}} <br></strong>
+                @endforeach
             </div>
             @endif
 
-
-
-            <form method="POST" action="/auth/login">
+            <form method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
