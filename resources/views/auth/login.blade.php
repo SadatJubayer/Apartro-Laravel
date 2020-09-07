@@ -11,7 +11,7 @@ Login
 
     <div class="row my-5">
         <div class="col-sm-8 col-md-6 col-lg-4 mx-auto">
-            <img src="/images/logo.svg" class="img-fluid" alt="" />
+            <img src="{{ asset('/images/logo.svg') }}" class="img-fluid" alt="" />
         </div>
     </div>
 
