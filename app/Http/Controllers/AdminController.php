@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
+use Illuminate\Support\Facades\DB;
+
 
 use Illuminate\Http\Request;
 use App\User;
@@ -14,13 +16,15 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $apartment = Apartment::where('adminId', $request->session()->get('id'))->first();
-        $userCount = User::count();
 
+        $allCounts = DB::select('SELECT COUNT(*) AS count FROM users UNION ALL SELECT COUNT(*) AS floors FROM floors UNION ALL SELECT COUNT(*) AS units FROM units UNION ALL SELECT SUM(cost) FROM expenses UNION ALL SELECT COUNT(*) AS complains FROM complains UNION ALL SELECT COUNT(*) AS visitor FROM visitor');
 
         $data = [
             'apartment' => $apartment,
-            'users'     => $userCount
+            'allCounts' => $allCounts
         ];
+
+
 
         return view('admin.index')->with('data', $data);
     }

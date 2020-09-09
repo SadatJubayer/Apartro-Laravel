@@ -25,9 +25,9 @@ Admin Home
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="white"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
-                            d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                            d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM {{$data['allCounts'][0]->count ?? ''}} 2l2 2-9 9-3 1 1-3 9-9z" />
                         <path fill-rule="evenodd"
-                            d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                            d="M {{$data['allCounts'][0]->count ?? ''}}.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
                     </svg>
                     Edit Data
                 </button>
@@ -98,7 +98,7 @@ Admin Home
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-column align-items-center">
                         <div class="display-4 font-weight-bold">
-                            {{$data['users'] ?? ''}}
+                            {{$data['allCounts'][0]->count ?? ''}}
                         </div>
                         <h3>Total Users</h3>
                     </div>
@@ -110,13 +110,14 @@ Admin Home
             </div>
         </div>
 
+
         <!-- Floors -->
         <div class="col-lg-4">
             <div class="card bg-info text-white mt-4">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-column align-items-center">
                         <div class="display-4 font-weight-bold">
-                            {{$data['floors'] ?? ''}}
+                            {{$data['allCounts'][1]->count ?? ''}}
                         </div>
                         <h3>Total Floors</h3>
                     </div>
@@ -133,7 +134,7 @@ Admin Home
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-column align-items-center">
                         <div class="display-4 font-weight-bold">
-                            12
+                            {{$data['allCounts'][2]->count ?? ''}}
                         </div>
                         <h3>Total units</h3>
                     </div>
@@ -151,7 +152,7 @@ Admin Home
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-column align-items-center">
                         <div class="display-4 font-weight-bold">
-                            12
+                            {{$data['allCounts'][3]->count ?? ''}}
                         </div>
                         <h3>Total Expenses</h3>
                     </div>
@@ -169,7 +170,7 @@ Admin Home
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-column align-items-center">
                         <div class="display-4 font-weight-bold">
-                            12
+                            {{$data['allCounts'][4]->count ?? ''}}
                         </div>
                         <h3>Total Complains</h3>
                     </div>
@@ -186,7 +187,7 @@ Admin Home
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-column align-items-center">
                         <div class="display-4 font-weight-bold">
-                            12
+                            {{$data['allCounts'][5]->count ?? ''}}
                         </div>
                         <h3>Total Visitors</h3>
                     </div>
