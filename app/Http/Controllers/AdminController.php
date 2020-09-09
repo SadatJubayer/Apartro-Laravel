@@ -58,17 +58,27 @@ class AdminController extends Controller
     }
     public function updateUser(Request $request)
     {
-
         $user = User::where('username', $request->username)->first();
         $user->username = $request->username;
-        $user->fistName = $request->fistName;
+        $user->firstName = $request->firstName;
         $user->lastName = $request->lastName;
         $user->email = $request->email;
         $user->role = $request->role;
         $user->gender = $request->gender;
-
-
         $user->save();
+
+        return redirect('admin/users');
+    }
+
+    public function destroyUser(Request $request)
+    {
+        $user = User::where('username', $request->username)->first();
+
+        try {
+            $user->delete();
+        } catch (\Throwable $th) {
+            return redirect('admin/users');
+        }
 
         return redirect('admin/users');
     }

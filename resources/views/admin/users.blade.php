@@ -248,7 +248,7 @@ Admin Home
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="/admin/users/deleteUser" method="POST">
+                                    <form action="/admin/users/destroyUser" method="POST">
                                         @csrf
                                         <input type="text" class="d-none" name="username"
                                             value="{{ $user->username }}" />

@@ -25,3 +25,4 @@ Route::post('/admin/users/add', 'AdminController@createUser');
 Route::post('/admin/users/activeUser', 'AdminController@activeUser');
 Route::post('/admin/users/deActiveUser', 'AdminController@deActiveUser');
 Route::post('/admin/users/updateUser', 'AdminController@updateUser');
+Route::post('/admin/users/destroyUser', 'AdminController@destroyUser');
