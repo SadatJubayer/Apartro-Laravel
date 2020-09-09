@@ -17,3 +17,6 @@ Route::post('/register', 'AuthController@register');
 
 // Admin Routes
 Route::get('/admin', 'AdminController@index');
+
+
+Route::get('/admin/users', 'AdminController@usersIndex');
