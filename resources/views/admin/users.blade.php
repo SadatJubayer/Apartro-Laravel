@@ -56,27 +56,27 @@ Admin Home
                         <td>
 
                             @if ($user->isActive)
-                            <a href="#" data-toggle="modal" data-target="#deActiveUser<%= user.id %>" class="btn btn-danger btn-sm @if ($user->role == 'admin')
+                            <a href="#" data-toggle="modal" data-target="#deActiveUser{{$user->id}}" class="btn btn-danger btn-sm @if ($user->role == 'admin')
                                 disabled
                                 @endif" role="button">Deactive</a>
                             @else
-                            <a href="#" data-toggle="modal" data-target="#activeUser<%= user.id %>"
+                            <a href="#" data-toggle="modal" data-target="#activeUser{{$user->id}}"
                                 class="btn btn-success btn-sm" role="button">Active</a>
                             @endif
 
                         </td>
                         <td>
-                            <a href="#" data-toggle="modal" data-target="#viewUser<%= user.id %>"
+                            <a href="#" data-toggle="modal" data-target="#viewUser{{$user->id}}"
                                 class="btn btn-primary btn-sm" role="button">View</a>
-                            <a href="#" data-toggle="modal" data-target="#updateUser<%= user.id %>"
+                            <a href="#" data-toggle="modal" data-target="#updateUser{{$user->id}}"
                                 class="btn btn-warning btn-sm" role="button">Edit</a>
-                            <a href="#" data-toggle="modal" data-target="#deleteUser<%= user.id %>"
-                                class="btn btn-danger btn-sm <% if(user.role === 'admin') { %> disabled <% } %>"
+                            <a href="#" data-toggle="modal" data-target="#deleteUser{{$user->id}}"
+                                class="btn btn-danger btn-sm @if ($user->role == 'admin') disabled @endif"
                                 role="button">Delete</a>
                         </td>
                     </tr>
                     <!-- Active user Modal -->
-                    <div class="modal fade" id="activeUser<%= user.id %>" aria-labelledby="activeUser"
+                    <div class="modal fade" id="activeUser{{$user->id}}" aria-labelledby="activeUser"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -89,21 +89,20 @@ Admin Home
                                 <div class="modal-body">
                                     <ul class="list-group">
                                         <li class="list-group-item">
-                                            Username: <%= user.username %>
+                                            Username: {{$user->username}}
                                         </li>
                                         <li class="list-group-item">
-                                            Date of registration: <%=
-                      user.createdAt.toString().substr(0,15) %>
+                                            Date of registration:
+                                            {{$user->createdAt}}
                                         </li>
-                                        <li class="list-group-item">Gender: <%= user.gender %></li>
-                                        <li class="list-group-item">Email: <%= user.email %></li>
-                                        <li class="list-group-item">User type: <%= user.role %></li>
+                                        <li class="list-group-item">Gender: {{$user->gender}}</li>
+                                        <li class="list-group-item">Email: {{$user->email}}</li>
+                                        <li class="list-group-item">User type: {{$user->role}}</li>
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
                                     <form action="/admin/users/activeUser" method="POST">
-                                        <input type="text" class="d-none" name="username"
-                                            value="<%= user.username %>" />
+                                        <input type="text" class="d-none" name="username" value="{{$user->username}}" />
                                         <button type="submit" class="btn btn-success">
                                             Confirm
                                         </button>
@@ -113,7 +112,7 @@ Admin Home
                         </div>
                     </div>
                     <!-- deActive user Modal -->
-                    <div class="modal fade" id="deActiveUser<%= user.id %>" aria-labelledby="deActiveUser"
+                    <div class="modal fade" id="deActiveUser{{$user->id}}" aria-labelledby="deActiveUser"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -128,15 +127,14 @@ Admin Home
                                 <div class="modal-body">
                                     <ul class="list-group">
                                         <li class="list-group-item">
-                                            Username: <%= user.username %>
+                                            Username: {{$user->username}}
                                         </li>
                                         <li class="list-group-item">
-                                            Date of registration: <%=
-                      user.createdAt.toString().substr(0,15) %>
+                                            Date of registration: {{$user->createdAt}}
                                         </li>
-                                        <li class="list-group-item">Gender: <%= user.gender %></li>
-                                        <li class="list-group-item">Email: <%= user.email %></li>
-                                        <li class="list-group-item">User type: <%= user.role %></li>
+                                        <li class="list-group-item">Gender: {{$user->gender}}</li>
+                                        <li class="list-group-item">Email: {{$user->email}}</li>
+                                        <li class="list-group-item">User type: {{$user->role}}</li>
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
@@ -152,7 +150,7 @@ Admin Home
                         </div>
                     </div>
                     <!-- Update user Modal -->
-                    <div class="modal fade" id="updateUser<%= user.id %>" aria-labelledby="updateUser"
+                    <div class="modal fade" id="updateUser{{$user->id}}" aria-labelledby="updateUser"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -166,45 +164,56 @@ Admin Home
                                 </div>
                                 <div class="modal-body">
                                     <form method="POST" action="/admin/users/updateUser">
-                                        <input type="text" name="id" value="<%= user.id %>" class="d-none" id="" />
+                                        <input type="text" name="id" value="{{$user->id}}" class="d-none" id="" />
 
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
                                             <input name="username" type="text" class="form-control" id="username"
-                                                value="<%= user.username %>" />
+                                                value="{{$user->username}}" />
                                         </div>
                                         <div class="mb-3">
                                             <label for="firstName" class="form-label">First Name</label>
                                             <input name="firstName" type="text" class="form-control" id="firstName"
-                                                value="<%= user.firstName %>" />
+                                                value=" {{$user->firstName}}" />
                                         </div>
                                         <div class="mb-3">
                                             <label for="lastName" class="form-label">Last Name</label>
                                             <input name="lastName" type="text" class="form-control" id="lastName"
-                                                value="<%= user.lastName %>" />
+                                                value="{{$user->lastName}}" />
                                         </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">E-mail</label>
                                             <input name="email" type="email" class="form-control" id="email"
-                                                value="<%= user.email %>" />
+                                                value="{{$user->email}}" />
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">User type</label>
-                                            <select name="role" value="<%= user.role %>" class="form-select">
-                                                <option value="" selected disabled>Select..</option>
-                                                <option value="tenant">Tenant</option>
-                                                <option value="owner">Owner</option>
-                                                <option value="employee">Employee</option>
+                                            <select name="role" class="form-select">
+                                                <option @if ($user->role == 'tenant')
+                                                    selected
+                                                    @endif value="tenant">Tenant</option>
+                                                <option @if ($user->role == 'owner')
+                                                    selected
+                                                    @endif value="owner">Owner</option>
+                                                <option @if ($user->role == 'employee')
+                                                    selected
+                                                    @endif value="employee">Employee</option>
+                                                <option @if ($user->role == 'admin')
+                                                    selected
+                                                    @endif value="admin">Admin</option>
                                             </select>
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="form-label">Gender</label>
                                             <select name="gender" class="form-select">
-                                                <option value="" disabled selected>Select..</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
+                                                <option @if ($user->gender == 'male')
+                                                    selected
+                                                    @endif value="male">Male</option>
+                                                <option @if ($user->gender == 'female')
+                                                    selected
+                                                    @endif value="female">Female</option>
                                             </select>
                                         </div>
 
@@ -217,7 +226,7 @@ Admin Home
                         </div>
                     </div>
                     <!-- delete user Modal -->
-                    <div class="modal fade" id="deleteUser<%= user.id %>" aria-labelledby="deleteUser"
+                    <div class="modal fade" id="deleteUser{{$user->id}}" aria-labelledby="deleteUser"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -232,14 +241,14 @@ Admin Home
                                 <div class="modal-body">
                                     <ul class="list-group">
                                         <li class="list-group-item">
-                                            Username: <%= user.username %>
+                                            Username: {{ $user->username }}
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
                                     <form action="/admin/users/deleteUser" method="POST">
                                         <input type="text" class="d-none" name="username"
-                                            value="<%= user.username %>" />
+                                            value="{{ $user->username }}" />
                                         <button type="submit" class="btn btn-danger">
                                             Confirm
                                         </button>
@@ -249,7 +258,7 @@ Admin Home
                         </div>
                     </div>
                     <!-- View user Modal -->
-                    <div class="modal fade" id="viewUser<%= user.id %>" aria-labelledby="deActiveUser"
+                    <div class="modal fade" id="viewUser{{$user->id}}" aria-labelledby="deActiveUser"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -263,26 +272,24 @@ Admin Home
                                 </div>
                                 <div class="modal-body">
                                     <ul class="list-group">
-                                        <li class="list-group-item">ID: <%= user.id %></li>
+                                        <li class="list-group-item">ID: {{$user->id}}</li>
                                         <li class="list-group-item">
-                                            Username: <%= user.username %>
+                                            Username: {{$user->username}}
                                         </li>
                                         <li class="list-group-item">
-                                            Date of registration: <%=
-                      user.createdAt.toString().substr(0,15) %>
+                                            Date of registration: {{$user->createdAt}}
                                         </li>
-                                        <li class="list-group-item">Gender: <%= user.gender %></li>
+                                        <li class="list-group-item">Gender: {{$user->gender}}</li>
                                         <li class="list-group-item">
-                                            Active: <% if(user.isActive) { %>
+                                            Active: @if ($user->isActive)
                                             <div class="badge bg-success">Active</div>
-                                            <% } else { %>
-
+                                            @else
                                             <div class="badge bg-danger">Not Active</div>
+                                            @endif
 
-                                            <% } %>
                                         </li>
-                                        <li class="list-group-item">Email: <%= user.email %></li>
-                                        <li class="list-group-item">User type: <%= user.role %></li>
+                                        <li class="list-group-item">Email: {{$user->email}}</li>
+                                        <li class="list-group-item">User type: {{$user->role}}</li>
                                     </ul>
                                 </div>
                             </div>
