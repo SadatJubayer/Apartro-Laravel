@@ -34,7 +34,9 @@ class AuthController extends Controller
             ->get();
 
         if (count($data) > 0) {
+
             $request->session()->put('username', $request->username);
+            $request->session()->put('id', $data[0]->id);
 
             if ($data[0]->role == "admin") {
                 $request->session()->put('role', "admin");

@@ -14,10 +14,11 @@ Admin Home
         <p>Welcome Admin! You can control your apartment from here.</p>
         <hr />
 
+        @if (@isset($data['apartment']->name))
         <div class="apartment-info">
             <div class="d-flex justify-content-between align-items-center">
                 <h3 class="alert-heading">
-                    Apartment Name
+                    {{$data['apartment']->name ?? ''}}
                 </h3>
                 <button onclick="location.href='/admin/editApartment';" type="button" class="btn bg-success text-white"
                     id="apartEditBtn">
@@ -34,14 +35,14 @@ Admin Home
 
             <p class="alert-heading mt-3">
                 <br />
-                <span class="font-weight-bold">Address: </span>
+                <span class="font-weight-bold">Address: </span> {{$data['apartment']->description  ?? ''}}
             </p>
             <p class="alert-heading">
                 <span class="font-weight-bold">Current notice: </span>
-                Notice here
+                {{$data['apartment']->notice  ?? ''}}
             </p>
         </div>
-
+        @else
         <div class="modal-container">
             <button class="btn btn-primary" data-toggle="modal" data-target="#addApartment">Add Apartment</button>
 
@@ -55,6 +56,7 @@ Admin Home
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="/admin/addApartment">
+                                @csrf
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                         <input type="text" name="name" placeholder="Apartment name" class="form-control"
@@ -80,6 +82,11 @@ Admin Home
                 </div>
             </div>
         </div>
+        @endif
+
+
+
+
     </div>
 
     <!-- Cards -->
@@ -198,4 +205,3 @@ Admin Home
 
 
 @endsection
- 

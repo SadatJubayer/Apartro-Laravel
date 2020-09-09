@@ -6,13 +6,20 @@ use App\Http\Requests\AuthRequest;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Apartment;
 
 class AdminController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.index');
+        $apartment = Apartment::where('adminId', $request->session()->get('id'))->first();
+        error_log($apartment);
+        $data = [
+            'apartment' => $apartment
+        ];
+
+        return view('admin.index')->with('data', $data);
     }
 
     public function usersIndex()
@@ -81,5 +88,17 @@ class AdminController extends Controller
         }
 
         return redirect('admin/users');
+    }
+
+
+    public function createApartment(Request $request)
+    {
+        $apartment = new Apartment();
+        $apartment->name = $request->name;
+        $apartment->description = $request->description;
+        $apartment->notice = $request->notice;
+        $apartment->adminId = $request->session()->get('id');
+        $apartment->save();
+        return redirect('admin');
     }
 }
