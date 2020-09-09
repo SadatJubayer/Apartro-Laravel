@@ -20,3 +20,8 @@ Route::get('/admin', 'AdminController@index');
 
 
 Route::get('/admin/users', 'AdminController@usersIndex');
+Route::get('/admin/users/add', 'AdminController@addUser');
+Route::post('/admin/users/add', 'AdminController@createUser');
+Route::post('/admin/users/activeUser', 'AdminController@activeUser');
+Route::post('/admin/users/deActiveUser', 'AdminController@deActiveUser');
+Route::post('/admin/users/updateUser', 'AdminController@updateUser');

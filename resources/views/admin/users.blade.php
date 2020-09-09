@@ -102,6 +102,7 @@ Admin Home
                                 </div>
                                 <div class="modal-footer">
                                     <form action="/admin/users/activeUser" method="POST">
+                                        @csrf
                                         <input type="text" class="d-none" name="username" value="{{$user->username}}" />
                                         <button type="submit" class="btn btn-success">
                                             Confirm
@@ -139,8 +140,8 @@ Admin Home
                                 </div>
                                 <div class="modal-footer">
                                     <form action="/admin/users/deActiveUser" method="POST">
-                                        <input type="text" class="d-none" name="username"
-                                            value="<%= user.username %>" />
+                                        @csrf
+                                        <input type="text" class="d-none" name="username" value="{{$user->username}}" />
                                         <button type="submit" class="btn btn-danger">
                                             Confirm
                                         </button>
@@ -164,6 +165,7 @@ Admin Home
                                 </div>
                                 <div class="modal-body">
                                     <form method="POST" action="/admin/users/updateUser">
+                                        @csrf
                                         <input type="text" name="id" value="{{$user->id}}" class="d-none" id="" />
 
                                         <div class="mb-3">
@@ -247,6 +249,7 @@ Admin Home
                                 </div>
                                 <div class="modal-footer">
                                     <form action="/admin/users/deleteUser" method="POST">
+                                        @csrf
                                         <input type="text" class="d-none" name="username"
                                             value="{{ $user->username }}" />
                                         <button type="submit" class="btn btn-danger">
