@@ -98,7 +98,7 @@ Admin Home
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-column align-items-center">
                         <div class="display-4 font-weight-bold">
-                            12
+                            {{$data['users'] ?? ''}}
                         </div>
                         <h3>Total Users</h3>
                     </div>
@@ -116,7 +116,7 @@ Admin Home
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-column align-items-center">
                         <div class="display-4 font-weight-bold">
-                            12
+                            {{$data['floors'] ?? ''}}
                         </div>
                         <h3>Total Floors</h3>
                     </div>

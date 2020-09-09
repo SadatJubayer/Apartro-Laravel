@@ -14,9 +14,12 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $apartment = Apartment::where('adminId', $request->session()->get('id'))->first();
-        error_log($apartment);
+        $userCount = User::count();
+
+
         $data = [
-            'apartment' => $apartment
+            'apartment' => $apartment,
+            'users'     => $userCount
         ];
 
         return view('admin.index')->with('data', $data);
