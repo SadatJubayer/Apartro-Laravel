@@ -30,13 +30,16 @@ Register
             </div>
             @endif
 
-            {{-- <% if(typeof success != 'undefined' && success) { %>
+
+            @isset($success)
             <div class="alert alert-success mt-3" role="alert">
                 Registration successful! You can
-                <a href="/auth/login" class="alert-link">login here</a> after your account
+                <a href="/login" class="alert-link">login here</a> after your account
                 is activated.
             </div>
-            <% } %> --}}
+            @endisset
+
+
 
             <form method="POST">
                 @csrf

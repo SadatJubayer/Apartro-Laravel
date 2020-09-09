@@ -32,7 +32,7 @@ Login
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input name="username" value="" type="text" class="form-control" id="username" />
+                    <input name="username" value="{{old('username')}}" type="text" class="form-control" id="username" />
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>

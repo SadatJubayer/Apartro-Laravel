@@ -56,6 +56,19 @@ class AuthController extends Controller
 
     public function register(AuthRequest $request)
     {
-        return view('auth.register');
+
+        if (User::where('username', $request->username)->first()) {
+            return view('auth.register')->withErrors('Username already taken!');
+        } else {
+
+            $user = new User();
+            $user->username = $request->username;
+            $user->password = $request->password;
+            $user->role = $request->role;
+            $user->isActive = false;
+            $user->save();
+
+            return view('auth.register')->with('success', true);
+        }
     }
 }
