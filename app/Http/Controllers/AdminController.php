@@ -101,4 +101,28 @@ class AdminController extends Controller
         $apartment->save();
         return redirect('admin');
     }
+
+
+    public function editApartment(Request $request)
+    {
+        $apartment = Apartment::where('adminId', $request->session()->get('id'))->first();
+        return view('admin.editApartment')->with('apartment', $apartment);
+    }
+    public function updateApartment(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $apartment = Apartment::where('adminId', $request->session()->get('id'))->first();
+
+        $apartment->name = $request->name;
+        $apartment->description = $request->description;
+        $apartment->notice = $request->notice;
+        $apartment->save();
+
+        return redirect('admin');
+    }
 }
