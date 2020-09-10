@@ -8,4 +8,4 @@ class Visitor extends Model
 {
     protected $table = 'visitors';
     public $timestamps = false;
-}
+}4r

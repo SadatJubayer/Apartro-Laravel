@@ -28,10 +28,19 @@ class AdminController extends Controller
             'allCounts' => $allCounts
         ];
 
-
-
         return view('admin.index')->with('data', $data);
     }
+
+
+    public function profile(Request $request)
+    {
+        $user = User::where('id', $request->session()->get('id'))->first();
+
+        return view('admin.profile')->with('user', $user);
+    }
+
+
+
 
     public function usersIndex()
     {

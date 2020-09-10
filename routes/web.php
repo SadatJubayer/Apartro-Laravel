@@ -19,6 +19,8 @@ Route::get('/logout', 'AuthController@logout');
 // Admin Routes
 Route::get('/admin', 'AdminController@index');
 
+// Admin Profile
+Route::get('/admin/profile', 'AdminController@profile');
 
 // Users
 Route::get('/admin/users', 'AdminController@usersIndex');
