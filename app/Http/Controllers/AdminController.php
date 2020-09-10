@@ -207,4 +207,27 @@ class AdminController extends Controller
 
         return redirect('admin/units');
     }
+    public function updateUnit(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:20',
+        ]);
+
+        $unit = Unit::find($request->id);
+        $unit->name = $request->name;
+        $unit->save();
+
+        return redirect('admin/units');
+    }
+
+    public function destroyUnit(Request $request)
+    {
+        $Unit = Unit::find($request->id);
+        try {
+            $Unit->delete();
+        } catch (\Throwable $th) {
+            return redirect('admin/units');
+        }
+        return redirect('admin/units');
+    }
 }

@@ -55,6 +55,7 @@ Admin Home
                                 </div>
                                 <div class="modal-body">
                                     <form action="/admin/units/update" method="POST">
+                                        @csrf
                                         <div class="mb-3">
                                             <label for="name" class="form-label">unit Name</label>
                                             <input type="text" name="id" value="{{$unit->id}}" class="d-none" id="" />
@@ -91,7 +92,8 @@ Admin Home
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="/admin/units/remove" method="POST">
+                                    <form action="/admin/units/delete" method="POST">
+                                        @csrf
                                         <input type="text" class="d-none" name="id" value="{{$unit->id}} " />
                                         <button type="submit" class="btn btn-danger">
                                             Confirm
