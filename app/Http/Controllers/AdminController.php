@@ -21,7 +21,7 @@ class AdminController extends Controller
     {
         $apartment = Apartment::where('adminId', $request->session()->get('id'))->first();
 
-        $allCounts = DB::select('SELECT COUNT(*) AS count FROM users UNION ALL SELECT COUNT(*) AS floors FROM floors UNION ALL SELECT COUNT(*) AS units FROM units UNION ALL SELECT SUM(cost) FROM expenses UNION ALL SELECT COUNT(*) AS complains FROM complains UNION ALL SELECT COUNT(*) AS visitor FROM visitor');
+        $allCounts = DB::select('SELECT COUNT(*) AS count FROM users UNION ALL SELECT COUNT(*) AS floors FROM floors UNION ALL SELECT COUNT(*) AS units FROM units UNION ALL SELECT SUM(cost) FROM expenses UNION ALL SELECT COUNT(*) AS complains FROM complains UNION ALL SELECT COUNT(*) AS visitor FROM visitors');
 
         $data = [
             'apartment' => $apartment,
@@ -46,6 +46,7 @@ class AdminController extends Controller
             'lastName' => 'required',
             'email' => 'required',
             'gender' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $user = User::where('id', $request->session()->get('id'))->first();
