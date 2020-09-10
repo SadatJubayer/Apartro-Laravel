@@ -31,7 +31,7 @@ Admin Home
                     <ul id="profileInfoList" class="list-group list-group-flush">
                         @if ($user->image)
                         <li class="list-group-item">
-                            <img src="/uploads/user{{ $user->image}}" height="150px" width="150px"
+                            <img src="/uploads/{{$user->image}}" height="150px" width="150px"
                                 class="p-2 border border-info rounded-circle mx-auto d-block" alt="User image" />
                         </li>
 

@@ -55,9 +55,17 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->gender = $request->gender;
 
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = 'user-' . $request->session()->get('username') . '.' .  $file->getClientOriginalExtension();
+            if ($file->move('uploads', $fileName)) {
+                $user->image = $fileName;
+                $user->save();
+            } else {
+                return redirect('admin/profile');
+            }
+        }
         $user->save();
-
-
 
         return redirect('admin/profile');
     }
