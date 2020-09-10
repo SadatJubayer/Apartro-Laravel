@@ -33,3 +33,7 @@ Route::post('/admin/users/destroyUser', 'AdminController@destroyUser');
 Route::post('/admin/addApartment', 'AdminController@createApartment');
 Route::get('/admin/editApartment', 'AdminController@editApartment');
 Route::post('/admin/editApartment', 'AdminController@updateApartment');
+
+// Floors
+Route::get('/admin/floors', 'AdminController@floorIndex');
+Route::post('/admin/floors', 'AdminController@createFloor');

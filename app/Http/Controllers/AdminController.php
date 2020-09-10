@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
 use App\Apartment;
+use App\Floor;
 
 class AdminController extends Controller
 {
@@ -131,5 +132,10 @@ class AdminController extends Controller
         $apartment->save();
 
         return redirect('admin');
+    }
+    public function floorIndex()
+    {
+        $floors = Floor::all();
+        return view('admin.floors')->with('floors', $floors);
     }
 }
