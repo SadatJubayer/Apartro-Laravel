@@ -12,6 +12,7 @@ use App\Apartment;
 use App\Floor;
 use App\Unit;
 use App\Complain;
+use App\Visitor;
 
 class AdminController extends Controller
 {
@@ -267,5 +268,19 @@ class AdminController extends Controller
         $complain->save();
 
         return redirect('admin/complains');
+    }
+
+    public function visitors()
+    {
+
+        // $visitor = Visitor::get();
+
+        $visitors = DB::table('visitors')
+            ->join('users', 'users.id', '=', 'visitors.userId')
+            ->join('units', 'units.id', '=', 'visitors.unitId')
+            ->select('visitors.*', 'users.username AS toWhom', 'units.name AS unitName')
+            ->get();
+
+        return view('admin.visitors')->with('visitors', $visitors);
     }
 }

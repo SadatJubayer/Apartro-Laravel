@@ -54,5 +54,6 @@ Route::get('/admin/expenses', 'AdminController@expenses');
 // Complains
 Route::get('/admin/complains', 'AdminController@complainsIndex');
 Route::post('/admin/complains/resolve', 'AdminController@resolveComplain');
-// Route::post('/admin/complains/update', 'AdminController@updateComplain');
-// Route::post('/admin/complains/delete', 'AdminController@destroyComplain');
+
+// Visitors
+Route::get('/admin/visitors', 'AdminController@visitors');
