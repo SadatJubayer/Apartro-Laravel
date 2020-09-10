@@ -179,7 +179,12 @@ class AdminController extends Controller
 
     public function unitIndex()
     {
-        $units = DB::select('SELECT id, name AS unitName, ownerName , floorName FROM `units` INNER JOIN ( SELECT id as userId, username as ownerName FROM users ) users ON units.ownerId=users.userId INNER JOIN ( SELECT id as floorId, name as floorName FROM floors ) floors ON floors.floorId=units.floorId');
+
+        $units = DB::table('units')
+            ->join('users', 'users.id', '=', 'units.ownerId')
+            ->join('floors', 'floors.id', '=', 'units.floorId')
+            ->select('units.id', 'units.name as unitName', 'users.username as ownerName', 'users.id as userId', 'floors.id as floorId,', 'floors.name as floorName')
+            ->get();
 
         $owners = User::where('role', 'owner')->get();
         $floors = Floor::get();
