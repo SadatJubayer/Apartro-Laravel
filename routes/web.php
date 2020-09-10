@@ -39,3 +39,10 @@ Route::get('/admin/floors', 'AdminController@floorIndex');
 Route::post('/admin/floors/new', 'AdminController@createFloor');
 Route::post('/admin/floors/update', 'AdminController@updateFloor');
 Route::post('/admin/floors/delete', 'AdminController@destroyFloor');
+
+
+// Units
+Route::get('/admin/units', 'AdminController@unitIndex');
+Route::post('/admin/units/new', 'AdminController@createUnit');
+Route::post('/admin/units/update', 'AdminController@updateUnit');
+Route::post('/admin/units/delete', 'AdminController@destroyUnit');

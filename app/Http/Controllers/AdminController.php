@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Apartment;
 use App\Floor;
+use App\Unit;
 
 class AdminController extends Controller
 {
@@ -173,5 +174,37 @@ class AdminController extends Controller
         }
 
         return redirect('admin/floors');
+    }
+
+    public function unitIndex()
+    {
+        $units = DB::select('SELECT id, name AS unitName, ownerName , floorName FROM `units` INNER JOIN ( SELECT id as userId, username as ownerName FROM users ) users ON units.ownerId=users.userId INNER JOIN ( SELECT id as floorId, name as floorName FROM floors ) floors ON floors.floorId=units.floorId');
+
+        $owners = User::where('role', 'owner')->get();
+        $floors = Floor::get();
+
+        $data = [
+            'units' => $units,
+            'owners' => $owners,
+            'floors' => $floors,
+        ];
+
+        error_log($data['owners']);
+
+        return view('admin.units')->with('data', $data);
+    }
+    public function createUnit(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:20',
+        ]);
+
+        $unit = new Unit();
+        $unit->name = $request->name;
+        $unit->ownerId = $request->ownerId;
+        $unit->floorId = $request->floorId;
+        $unit->save();
+
+        return redirect('admin/units');
     }
 }
