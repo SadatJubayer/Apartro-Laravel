@@ -26,8 +26,8 @@ Admin Home
                 </div>
             </div>
             <div class="card-body">
-                <form action="">
-
+                <form method="POST" enctype="multipart/form-data">
+                    @csrf
                     <ul id="profileInfoList" class="list-group list-group-flush">
                         @if ($user->image)
                         <li class="list-group-item">
@@ -68,6 +68,13 @@ Admin Home
 
 
                     <ul id="profileEditForm" class="list-group list-group-flush d-none">
+                        @if($errors->any())
+                        <div class="alert alert-danger mt-3">
+                            @foreach ($errors->all() as $err)
+                            <strong> {{$err}} <br></strong>
+                            @endforeach
+                        </div>
+                        @endif
                         <li class="list-group-item">
                             <input type="text" disabled value='{{ $user->username}}' name="username"
                                 placeholder="username" class="form-control" />
@@ -100,7 +107,7 @@ Admin Home
                         </li>
                         <li class="list-group-item">
                             <div class="form-file">
-                                <input type="file" class="form-file-input" id="customFile">
+                                <input name="image" type="file" class="form-file-input" id="customFile">
                                 <label class="form-file-label" for="customFile">
                                     <span class="form-file-text">Choose Profile Picture...</span>
                                     <span class="form-file-button">Browse</span>

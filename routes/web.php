@@ -21,6 +21,7 @@ Route::get('/admin', 'AdminController@index');
 
 // Admin Profile
 Route::get('/admin/profile', 'AdminController@profile');
+Route::post('/admin/profile', 'AdminController@updateProfile');
 
 // Users
 Route::get('/admin/users', 'AdminController@usersIndex');

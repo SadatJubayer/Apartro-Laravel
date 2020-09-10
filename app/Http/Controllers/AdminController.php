@@ -39,6 +39,29 @@ class AdminController extends Controller
         return view('admin.profile')->with('user', $user);
     }
 
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required',
+            'gender' => 'required',
+        ]);
+
+        $user = User::where('id', $request->session()->get('id'))->first();
+
+        $user->firstName = $request->firstName;
+        $user->lastName = $request->lastName;
+        $user->email = $request->email;
+        $user->gender = $request->gender;
+
+        $user->save();
+
+
+
+        return redirect('admin/profile');
+    }
+
 
 
 
