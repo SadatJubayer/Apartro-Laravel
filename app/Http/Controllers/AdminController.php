@@ -259,4 +259,13 @@ class AdminController extends Controller
 
         return view('admin.complains')->with('complains', $complains);
     }
+
+    public function resolveComplain(Request $request)
+    {
+        $complain = Complain::find($request->id);
+        $complain->isResolved = 1;
+        $complain->save();
+
+        return redirect('admin/complains');
+    }
 }

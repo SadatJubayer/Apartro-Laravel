@@ -33,12 +33,12 @@ Admin Home
                         <td>
                             @if ($complain->isResolved == 0)
                             <div class="badge bg-danger">Not Resolved</div>
-                            <button data-toggle="modal" data-target="#resolveComplain<%= complain.id %>"
-                                class="btn btn-success btn-sm">
+                            <button data-toggle="modal" data-target="#resolveComplain{{$complain->id}}"
+                                class="btn btn-warning btn-sm">
                                 Resolve
                             </button>
 
-                            <div class="modal fade" id="resolveComplain<%= complain.id %>"
+                            <div class="modal fade" id="resolveComplain{{$complain->id}}"
                                 aria-labelledby="ActiveComplain" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -53,14 +53,14 @@ Admin Home
                                         <div class="modal-body">
                                             <ul class="list-group">
                                                 <li class="list-group-item">
-                                                    <strong>Details: </strong><%= complain.description %>
+                                                    <strong>Details: </strong>{{$complain->description}}
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="/admin/complains" method="POST">
-                                                <input type="text" class="d-none" name="id"
-                                                    value="<%= complain.id %>" />
+                                            <form action="/admin/complains/resolve" method="POST">
+                                                @csrf
+                                                <input type="text" class="d-none" name="id" value="{{$complain->id}}" />
                                                 <button type="submit" class="btn btn-success">
                                                     Confirm
                                                 </button>
