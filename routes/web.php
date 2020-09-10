@@ -46,3 +46,6 @@ Route::get('/admin/units', 'AdminController@unitIndex');
 Route::post('/admin/units/new', 'AdminController@createUnit');
 Route::post('/admin/units/update', 'AdminController@updateUnit');
 Route::post('/admin/units/delete', 'AdminController@destroyUnit');
+
+// Expenses
+Route::get('/admin/expenses', 'AdminController@expenses');

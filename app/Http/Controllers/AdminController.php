@@ -11,6 +11,7 @@ use App\User;
 use App\Apartment;
 use App\Floor;
 use App\Unit;
+use App\Expense;
 
 class AdminController extends Controller
 {
@@ -229,5 +230,16 @@ class AdminController extends Controller
             return redirect('admin/units');
         }
         return redirect('admin/units');
+    }
+
+    public function expenses()
+    {
+
+        $expenses = DB::table('expenses')
+            ->join('users', 'users.id', '=', 'expenses.userId')
+            ->select('expenses.*', 'users.username AS expenseBy')
+            ->get();
+
+        return view('admin.expenses')->with('expenses', $expenses);
     }
 }
