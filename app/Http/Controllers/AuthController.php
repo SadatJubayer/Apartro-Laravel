@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AuthRequest;
 
 use App\User;
+use Symfony\Component\VarDumper\Caster\RedisCaster;
 
 class AuthController extends Controller
 {
@@ -72,5 +73,10 @@ class AuthController extends Controller
 
             return view('auth.register')->with('success', true);
         }
+    }
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        return redirect('/login')->withErrors('You have logged out');
     }
 }
