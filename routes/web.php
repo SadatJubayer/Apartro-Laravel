@@ -36,4 +36,6 @@ Route::post('/admin/editApartment', 'AdminController@updateApartment');
 
 // Floors
 Route::get('/admin/floors', 'AdminController@floorIndex');
-Route::post('/admin/floors', 'AdminController@createFloor');
+Route::post('/admin/floors/new', 'AdminController@createFloor');
+Route::post('/admin/floors/update', 'AdminController@updateFloor');
+Route::post('/admin/floors/delete', 'AdminController@destroyFloor');

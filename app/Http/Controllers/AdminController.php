@@ -138,4 +138,40 @@ class AdminController extends Controller
         $floors = Floor::all();
         return view('admin.floors')->with('floors', $floors);
     }
+    public function createFloor(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $floor = new Floor();
+        $floor->name = $request->name;
+        $floor->save();
+
+        return redirect('admin/floors');
+    }
+
+    public function updateFloor(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:20',
+        ]);
+
+        $floor = Floor::find($request->id);
+        $floor->name = $request->name;
+        $floor->save();
+        return redirect('admin/floors');
+    }
+    public function destroyFloor(Request $request)
+    {
+        $floor = Floor::find($request->id);
+
+        try {
+            $floor->delete();
+        } catch (\Throwable $th) {
+            return redirect('admin/floors');
+        }
+
+        return redirect('admin/floors');
+    }
 }

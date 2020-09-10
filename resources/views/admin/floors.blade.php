@@ -49,7 +49,8 @@ Admin Home
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/admin/floors" method="POST">
+                                    <form action="/admin/floors/update" method="POST">
+                                        @csrf
                                         <div class="mb-3">
                                             <label for="name" class="form-label">Floor Name</label>
                                             <input type="text" name="id" value="{{$floor->id}}" class="d-none" id="" />
@@ -87,6 +88,7 @@ Admin Home
                                 </div>
                                 <div class="modal-footer">
                                     <form action="/admin/floors/delete" method="POST">
+                                        @csrf
                                         <input type="text" class="d-none" name="id" value="{{$floor->id}} " />
                                         <button type="submit" class="btn btn-danger">
                                             Confirm
@@ -115,6 +117,7 @@ Admin Home
                     </div>
                     <div class="modal-body">
                         <form action="/admin/floors/new" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Floor Name</label>
                                 <input required name="name" type="text" class="form-control" id="name" />
