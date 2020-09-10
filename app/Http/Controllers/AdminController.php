@@ -11,7 +11,7 @@ use App\User;
 use App\Apartment;
 use App\Floor;
 use App\Unit;
-use App\Expense;
+use App\Complain;
 
 class AdminController extends Controller
 {
@@ -246,5 +246,17 @@ class AdminController extends Controller
             ->get();
 
         return view('admin.expenses')->with('expenses', $expenses);
+    }
+
+    public function complainsIndex()
+    {
+
+        $complains = DB::table('complains')
+            ->join('users', 'users.id', '=', 'complains.userId')
+            ->join('units', 'units.id', '=', 'complains.unitId')
+            ->select('complains.*', 'users.username AS complainBy', 'units.name AS unitName')
+            ->get();
+
+        return view('admin.complains')->with('complains', $complains);
     }
 }

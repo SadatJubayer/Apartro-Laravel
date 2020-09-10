@@ -49,3 +49,10 @@ Route::post('/admin/units/delete', 'AdminController@destroyUnit');
 
 // Expenses
 Route::get('/admin/expenses', 'AdminController@expenses');
+
+
+// Complains
+Route::get('/admin/complains', 'AdminController@complainsIndex');
+Route::post('/admin/complains/new', 'AdminController@createComplain');
+Route::post('/admin/complains/update', 'AdminController@updateComplain');
+Route::post('/admin/complains/delete', 'AdminController@destroyComplain');
