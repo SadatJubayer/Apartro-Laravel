@@ -2,7 +2,7 @@
 @extends('admin.navbar')
 
 @section('title')
-Admin Home
+Units
 @endsection
 
 
@@ -156,7 +156,8 @@ Admin Home
                     </div>
                 </div>
 
-            </div>
+           
+ </div>
         </div>
     </div>
 </div>

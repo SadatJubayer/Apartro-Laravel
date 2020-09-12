@@ -2,7 +2,7 @@
 @extends('admin.navbar')
 
 @section('title')
-Admin Home
+Floors
 @endsection
 
 
@@ -127,7 +127,8 @@ Admin Home
                             </button>
                         </form>
                     </div>
-                </div>
+           
+     </div>
             </div>
         </div>
     </div>

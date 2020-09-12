@@ -2,7 +2,7 @@
 @extends('admin.navbar')
 
 @section('title')
-Admin Home
+My Profile
 @endsection
 
 

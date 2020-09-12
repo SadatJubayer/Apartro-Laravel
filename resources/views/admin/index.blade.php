@@ -35,11 +35,11 @@ Admin Home
 
             <p class="alert-heading mt-3">
                 <br />
-                <span class="font-weight-bold">Address: </span> {{$data['apartment']->description  ?? ''}}
+                <span class="font-weight-bold">Address: </span> {{$data['apartment']->description ?? ''}}
             </p>
             <p class="alert-heading">
                 <span class="font-weight-bold">Current notice: </span>
-                {{$data['apartment']->notice  ?? ''}}
+                {{$data['apartment']->notice ?? ''}}
             </p>
         </div>
         @else
@@ -199,6 +199,7 @@ Admin Home
             </div>
         </div>
     </div>
+
 
 
 </div>

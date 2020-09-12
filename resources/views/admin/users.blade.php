@@ -2,7 +2,7 @@
 @extends('admin.navbar')
 
 @section('title')
-Admin Home
+All Users
 @endsection
 
 
@@ -314,7 +314,8 @@ Admin Home
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-    const searchUser = (e) => {
+
+const searchUser = (e) => {
     axios
         .post('/admin/users/search', {
             term: e.value,
