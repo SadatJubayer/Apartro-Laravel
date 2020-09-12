@@ -2,7 +2,7 @@
 @extends('admin.navbar')
 
 @section('title')
-Admin Home
+Complains
 @endsection
 
 
@@ -82,5 +82,7 @@ Admin Home
             </table>
         </div>
     </div>
+
+
 </div>
 @endsection

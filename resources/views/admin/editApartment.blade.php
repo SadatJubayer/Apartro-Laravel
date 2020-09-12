@@ -2,7 +2,7 @@
 @extends('admin.navbar')
 
 @section('title')
-Admin Home
+Edit Appartment
 @endsection
 
 
@@ -58,7 +58,8 @@ Admin Home
 
 
                 </form>
-            </div>
+           
+ </div>
         </div>
     </div>
 </div>
