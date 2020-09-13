@@ -44,7 +44,7 @@ class AuthController extends Controller
                 return redirect('admin');
             } else if ($data[0]->role == "owner") {
                 $request->session()->put('role', "owner");
-                return redirect('owner');
+                return redirect()->route('ownerDashboard');
             } else if ($data[0]->role == "tenant") {
                 $request->session()->put('role', "tenant");
                 return redirect('tenant');

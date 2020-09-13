@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
  
-    <title>SST Marine Solutions Ltd. &#8211; A Passion For Ship Design</title>
+    <title>Aparto &#8211; An Apartment Management System</title>
     <!-- Custom CSS -->
     <link href="{{ asset('backend/assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
