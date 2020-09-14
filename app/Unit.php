@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Unit extends Model
@@ -11,6 +12,11 @@ class Unit extends Model
 
         public function floor()
         {
-            return $this->belongsTo('App\User','floorId');
+            return $this->belongsTo(Floor::class,'floorId','id');
+        }
+
+        public function tanent()
+        {
+            return $this->hasOne(Tanent::class, 'rantedUnit','id');
         }
 }

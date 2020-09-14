@@ -12,6 +12,7 @@ use App\Complain;
 use App\Visitor;
 use App\Http\Requests\AuthRequest;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class unitController extends Controller
 {
@@ -23,7 +24,7 @@ class unitController extends Controller
     public function index(Request $request)
     {
         $units = Unit::where('ownerId', $request->session()->get('id'))->get();
-        return $units;
+        return view('Backend.pages.units.manage',compact('units'));
 
     }
 
@@ -65,9 +66,9 @@ class unitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Unit $unit)
     {
-        //
+        return view('Backend.pages.units.edit', compact('unit'));
     }
 
     /**
@@ -77,9 +78,12 @@ class unitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Unit $unit)
     {
-        //
+        $unit->name             = $request->name;
+        $unit->save();
+        Toastr::success('Unit Updated');
+        return redirect()->route('getUnits');
     }
 
     /**

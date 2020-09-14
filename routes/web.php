@@ -65,6 +65,9 @@ Route::middleware(['adminAccess'])->group(function () {
 Route::group(['prefix' => 'owner'], function(){
     Route::get('/', 'ownerController@index')->name('ownerDashboard');
     Route::get('/units', 'Owner\unitController@index')->name('getUnits');
+    Route::get('/units/{unit:id}', 'Owner\unitController@edit')->name('editUnits');
+    Route::post('/units/{unit:id}', 'Owner\unitController@update')->name('updateUnits');
+   
   
     
 

@@ -8,4 +8,11 @@ class Tanent extends Model
 {
     protected $table = 'tanents';
     public $timestamps = false;
+
+
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class, 'rantedUnit', 'id');
+    }
 }
