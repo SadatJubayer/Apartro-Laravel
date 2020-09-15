@@ -4,28 +4,19 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
-use App\Apartment;
-use App\Floor;
-use App\Unit;
-use App\Complain;
-use App\Visitor;
 use App\Http\Requests\AuthRequest;
-use Illuminate\Support\Facades\Auth;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Unit;
 
-class unitController extends Controller
+class TanentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index( )
     {
-        $units = Unit::where('ownerId', $request->session()->get('id'))->get();
-        return view('Backend.pages.units.manage',compact('units'));
-
+       
     }
 
     /**
@@ -33,9 +24,10 @@ class unitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $units=Unit::where('ownerId', $request->session()->get('id'))->get();
+        return view('Backend.pages.tanents.create',compact('units'));
     }
 
     /**
@@ -46,7 +38,7 @@ class unitController extends Controller
      */
     public function store(Request $request)
     {
-        
+       
     }
 
     /**
@@ -66,9 +58,9 @@ class unitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Unit $unit)
+    public function edit($id)
     {
-        return view('Backend.pages.units.edit', compact('unit'));
+        //
     }
 
     /**
@@ -78,12 +70,9 @@ class unitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Unit $unit)
+    public function update(Request $request, $id)
     {
-        $unit->name             = $request->name;
-        $unit->save();
-        Toastr::success('Unit Updated');
-        return redirect()->route('getUnits');
+        //
     }
 
     /**

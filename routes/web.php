@@ -67,6 +67,9 @@ Route::group(['prefix' => 'owner'], function(){
     Route::get('/units', 'Owner\unitController@index')->name('getUnits');
     Route::get('/units/{unit:id}', 'Owner\unitController@edit')->name('editUnits');
     Route::post('/units/{unit:id}', 'Owner\unitController@update')->name('updateUnits');
+    Route::get('/tanent', 'Owner\TanentController@create')->name('createTanent');
+    Route::post('/tanent', 'Owner\TanentController@store')->name('storeTanents');
+
    
   
     
