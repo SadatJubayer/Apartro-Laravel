@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Visitor;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -17,9 +18,10 @@ class TanentUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $visitors=Visitor::where('userId', $request->session()->get('id'))->get();
+        return view('Backend.pages.visitor.manage',compact('visitors'));
     }
 
     /**

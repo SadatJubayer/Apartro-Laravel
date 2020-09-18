@@ -71,7 +71,7 @@ Route::group(['prefix' => 'owner'], function(){
     Route::post('/tanent', 'Owner\TanentController@store')->name('storeTanents');
     Route::get('/tanentUser', 'TanentUserController@create')->name('createTanentsusers');
     Route::post('/tanentUser', 'TanentUserController@store')->name('storeTanentsusers');
-    Route::post('/visitors', 'TanentUserController@store')->name('storeTanentsusers');
+    Route::get('/visitors', 'TanentUserController@index')->name('visitors');
 
    
   
