@@ -14,13 +14,14 @@
 
             <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Tenants</span></a>
               <ul aria-expanded="false" class="collapse  first-level">
-              <li class="sidebar-item"><a href="{{route('createTanent')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Manage Units</span></a></li>
+              <li class="sidebar-item"><a href="{{route('createTanent')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Create Tenants</span></a></li>
+              <li class="sidebar-item"><a href="{{route('createTanent')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Manage Tenants</span></a></li>
               </ul>
           </li>
             
           <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Create Tenant</span></a>
             <ul aria-expanded="false" class="collapse  first-level">
-            <li class="sidebar-item"><a href="" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Manage Units</span></a></li>
+            <li class="sidebar-item"><a href="{{route('createTanentsusers')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Create Tanent Users</span></a></li>
             </ul>
         </li>
 

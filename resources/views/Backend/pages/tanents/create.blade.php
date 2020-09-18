@@ -22,7 +22,7 @@
                 <label>Rented Unit</label>
                 
                 
-                <select name="userId" >
+                <select name="rantedUnit" >
                     <option value=""> -- Select One --</option>
                     @foreach($units as $rent)
                     <option value="{{$rent->id}}">{{$rent->name}}</option>
@@ -49,7 +49,10 @@
                 <label>Permanent Address</label>
                 <input type="text" name="address" class="form-control" placeholder="Please Insert Companys Twitter Link">
             </div>
-
+            
+            <div class="form-group">
+              <input type="submit" name="addSlider" value="Add Tanent" class="btn btn-primary">
+          </div>
              
 
         </form>

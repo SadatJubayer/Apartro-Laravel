@@ -69,6 +69,9 @@ Route::group(['prefix' => 'owner'], function(){
     Route::post('/units/{unit:id}', 'Owner\unitController@update')->name('updateUnits');
     Route::get('/tanent', 'Owner\TanentController@create')->name('createTanent');
     Route::post('/tanent', 'Owner\TanentController@store')->name('storeTanents');
+    Route::get('/tanentUser', 'TanentUserController@create')->name('createTanentsusers');
+    Route::post('/tanentUser', 'TanentUserController@store')->name('storeTanentsusers');
+    Route::post('/visitors', 'TanentUserController@store')->name('storeTanentsusers');
 
    
   

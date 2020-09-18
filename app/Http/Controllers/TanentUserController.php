@@ -1,23 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Owner;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\AuthRequest;
-use App\Unit;
-use App\Tanent;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+use Brian2694\Toastr\Facades\Toastr;
 
-class TanentController extends Controller
+class TanentUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request )
+    public function index()
     {
-       $ownerUnits= Unit::where('ownerId',$request->session()->get('id'))->where('id',)->get();
+        //
     }
 
     /**
@@ -25,10 +27,9 @@ class TanentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $units=Unit::where('ownerId', $request->session()->get('id'))->get();
-        return view('Backend.pages.tanents.create',compact('units'));
+        return view('Backend.pages.tanentUser.create');
     }
 
     /**
@@ -39,16 +40,24 @@ class TanentController extends Controller
      */
     public function store(Request $request)
     {
-       $tanent = new Tanent();
-       $tanent->userId=$request->userId;
-       $tanent->rantedUnit=$request->rantedUnit;
-       $tanent->rent=$request->rent;
-       $tanent->nid=$request->nid;
-       $tanent->phone=$request->phone;
-       $tanent->address=$request->address;
+        $tanent = new user();
+       $tanent->username=$request->username;
+       $tanent->password=Hash::make($request->username);
+       $tanent->role = 'tenant';
+       $tanent->isActive= '1';
+       $tanent->email= $request -> email;
+       $tanent->gender= $request->gender; 
+       
+       if ( $request->image )
+       {
+           $image = $request->file('image');
+           $img = time() .Str::random(12). '.' . $image->getClientOriginalExtension();
+           $location = public_path('images/' . $img);
+           Image::make($image)->save($location);
+           $tanent->image = $img;
+       }
        $tanent->save();
-       return redirect()->route('manageTanents');
-
+       return redirect()->route('ownerDashboard');
     }
 
     /**
