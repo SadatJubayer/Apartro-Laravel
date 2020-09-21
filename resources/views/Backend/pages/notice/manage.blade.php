@@ -16,6 +16,7 @@
               <th scope="col">Description</th>
               
               <th scope="col">Notice</th>
+              <th scope="col">Action</th>
               
 
              
@@ -27,12 +28,20 @@
               @foreach( $apratments as $apratment )
               <tr>
                 <th scope="row"> {{ $apratment->id }} </th>
-                <th > {{ $apratment->name }} </th>
-                <th > {{ $apratment->description }} </th>
+                <td > {{ $apratment->name }} </td>
+                <td > {{ $apratment->description }} </td>
             
-                <th > {{ $apratment->notice }} </th>
+                <td > {{ $apratment->notice }} </td>
                 
-                    
+                <td>
+                    <div class="btn-group">
+                        <a href="{{ route('createNotice', $apratment->id) }}" class="btn btn-success btn-sm">Create Notice</a>
+                       
+                    </div>
+
+             
+
+                </td>  
                     
                 </tr>
                
