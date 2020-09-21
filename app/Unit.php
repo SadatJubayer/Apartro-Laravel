@@ -19,4 +19,9 @@ class Unit extends Model
         {
             return $this->hasOne(Tanent::class, 'rantedUnit','id');
         }
+
+        public function user()
+            {
+                return $this->belongsTo(User::class, 'userId', 'id');
+            }
 }

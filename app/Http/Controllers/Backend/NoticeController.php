@@ -1,26 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Owner;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\AuthRequest;
-use App\Unit;
-use App\Tanent;
+use App\Apartment;
 
-class TanentController extends Controller
+class NoticeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request )
+    public function index(Request $request)
     {
-        
-       $ownerUnits= Unit::where('ownerId',$request->session()->get('id'))->get();
-        
-       return view('Backend.pages.tanents.manage',compact('ownerUnits'));
+        $apratments=Apartment::where('ownerId', $request->session()->get('id'))->get();
+        return view('Backend.pages.notice.manage',compact('apratments'));
+
+
     }
 
     /**
@@ -28,10 +26,9 @@ class TanentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Apartment $apartment)
     {
-        $units=Unit::where('ownerId', $request->session()->get('id'))->get();
-        return view('Backend.pages.tanents.create',compact('units'));
+        
     }
 
     /**
@@ -42,16 +39,7 @@ class TanentController extends Controller
      */
     public function store(Request $request)
     {
-       $tanent = new Tanent();
-       $tanent->userId=$request->userId;
-       $tanent->rantedUnit=$request->rantedUnit;
-       $tanent->rent=$request->rent;
-       $tanent->nid=$request->nid;
-       $tanent->phone=$request->phone;
-       $tanent->address=$request->address;
-       $tanent->save();
-       return redirect()->route('manageTanents');
-
+        //
     }
 
     /**
@@ -71,9 +59,9 @@ class TanentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tanent $tanent)
+    public function edit($id)
     {
-        return view('Backend.pages.tanents.edit',compact('tanent'));
+        //
     }
 
     /**

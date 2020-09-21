@@ -15,4 +15,11 @@ class Tanent extends Model
     {
         return $this->belongsTo(Unit::class, 'rantedUnit', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userId', 'id');
+    }
+
+   
 }

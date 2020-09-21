@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+Use App\Bill;
+Use App\Expense;
 
 class Tanent extends Controller
 {
@@ -12,9 +14,18 @@ class Tanent extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $bills=Bill::where('ownerId', $request->session()->get('id'))->get();
+        
+        return view('Backend.pages.bills.manage',compact('bills'));
+    }
+
+    public function expense(Request $request)
+    {
+        $expenses=Expense::where('ownerId', $request->session()->get('id'))->get();
+        
+        return view('Backend.pages.expense.manage',compact('expenses'));
     }
 
     /**
