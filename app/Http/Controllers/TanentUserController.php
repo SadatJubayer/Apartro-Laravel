@@ -47,7 +47,7 @@ class TanentUserController extends Controller
        $tanent->password=Hash::make($request->username);
        $tanent->role = 'tenant';
        $tanent->isActive= '1';
-       $tanent->email= $request -> email;
+       $tanent->email= $request ->email;
        $tanent->gender= $request->gender; 
        
        if ( $request->image )

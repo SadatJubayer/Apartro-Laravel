@@ -64,6 +64,7 @@ Route::middleware(['adminAccess'])->group(function () {
 
 Route::group(['prefix' => 'owner'], function(){
     Route::get('/', 'ownerController@index')->name('ownerDashboard');
+    Route::post('/{complain:id}', 'ownerController@update')->name('complainUpdate');
     Route::get('/units', 'Owner\unitController@index')->name('getUnits');
     Route::get('/units/{unit:id}', 'Owner\unitController@edit')->name('editUnits');
     Route::post('/units/{unit:id}', 'Owner\unitController@update')->name('updateUnits');
@@ -96,6 +97,11 @@ Route::group(['prefix' => 'owner'], function(){
         Route::post('/create/{apartment:id}', 'Backend\NoticeController@store')->name('storeNotice');
        
     });
+
+     // Admin Profile
+     
+     Route::get('/admin/profile', 'AdminController@profile')->name('adminProfile');
+     Route::post('/admin/profile', 'AdminController@updateProfile')->name('updateProfile');
     
 
 });

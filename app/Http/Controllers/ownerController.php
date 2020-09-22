@@ -19,9 +19,11 @@ class ownerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('backend.template.layout');
+        $complains=Complain::where('ownerID', $request->session()->get('id'))->where('isResolved',0)->get();
+        
+        return view('Backend.pages.Dashboard.manage',compact('complains'));
     }
 
     /**
@@ -64,7 +66,7 @@ class ownerController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -74,9 +76,11 @@ class ownerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Complain $complain,Request $request)
     {
-        //
+        $complain->isResolved=$request->isResolved;
+        $complain->save();
+        return redirect()->route('ownerDashboard');
     }
 
     /**
