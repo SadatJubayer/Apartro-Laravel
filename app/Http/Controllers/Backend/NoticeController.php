@@ -43,7 +43,7 @@ class NoticeController extends Controller
     {
         $apartment->notice             = $request->notice;
         $apartment->save();
-        Toastr::success('Protfolio Updated');
+        Toastr::success('Notice Updated');
         return redirect()->route('manageNotice');
     }
 

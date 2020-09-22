@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AuthRequest;
 use App\Unit;
 use App\Tanent;
+use Brian2694\Toastr\Facades\Toastr;
 
 class TanentController extends Controller
 {
@@ -18,7 +19,7 @@ class TanentController extends Controller
     public function index(Request $request )
     {
         
-       $ownerUnits= Unit::where('ownerId',$request->session()->get('id'))->get();
+       $ownerUnits= Tanent::where('ownerId',$request->session()->get('id'))->get();
         
        return view('Backend.pages.tanents.manage',compact('ownerUnits'));
     }
@@ -49,12 +50,14 @@ class TanentController extends Controller
        $tanent->nid=$request->nid;
        $tanent->phone=$request->phone;
        $tanent->address=$request->address;
+       $tanent->ownerId='2';
        $tanent->save();
-       return redirect()->route('manageTanents');
+       Toastr::success('Tanent Information Created');
+       return redirect()->route('manageTanent');
 
     }
 
-    /**
+    /** 
      * Display the specified resource.
      *
      * @param  int  $id
@@ -71,9 +74,10 @@ class TanentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tanent $tanent)
+    public function edit(Tanent $tanent,Request $request)
     {
-        return view('Backend.pages.tanents.edit',compact('tanent'));
+        $units=Unit::where('ownerId', $request->session()->get('id'))->get();
+        return view('Backend.pages.tanents.edit',compact('tanent','units'));
     }
 
     /**
@@ -83,9 +87,17 @@ class TanentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Tanent $tanent,Request $request)
     {
-        //
+        $tanent->userId=$request->userId;
+       $tanent->rantedUnit=$request->rantedUnit;
+       $tanent->rent=$request->rent;
+       $tanent->nid=$request->nid;
+       $tanent->phone=$request->phone;
+       $tanent->address=$request->address;
+       $tanent->save();
+        Toastr::success('Protfolio Updated');
+        return redirect()->route('manageTanent');
     }
 
     /**
@@ -94,8 +106,11 @@ class TanentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tanent $tanent)
     {
-        //
+        
+        $tanent->delete();
+        Toastr::error(' Deleted Successfully');
+        return redirect()->route('manageTanent');
     }
 }

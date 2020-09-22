@@ -30,26 +30,18 @@
               @foreach( $ownerUnits as $ownerUnit )
                   <tr>
                     <th scope="row"> {{ $ownerUnit->id }} </th>
-                    <th > {{ $ownerUnit->name }} </th>
-                    @if($ownerUnit->tanent)
-                        <th scope="row"> {{ $ownerUnit->tanent->rent }} </th>
-                        <th scope="row"> {{ $ownerUnit->tanent->nid }} </th>
-                        <th scope="row"> {{ $ownerUnit->tanent->phone }} </th>
-                        <th scope="row"> {{ $ownerUnit->tanent->address }} </th>
-                            @if ($ownerUnit->tanent->user)
-                                <th scope="row"> {{ $ownerUnit->tanent->user->username }} </th>
-                            @else
-                                <th scope="row"> use </th>
-                            @endif
+                    <th > {{ $ownerUnit->unit->name }} </th>
+                  
+                        <th scope="row"> {{ $ownerUnit->rent }} </th>
+                        <th scope="row"> {{ $ownerUnit->nid }} </th>
+                        <th scope="row"> {{ $ownerUnit->phone }} </th>
+                        <th scope="row"> {{ $ownerUnit->address }} </th>
+                       <th scope="row"> {{ $ownerUnit->user->username }} </th>
+                           
+                          
+                           
 
-                    @else
-                        <th scope="row">  </th>
-                        <th scope="row">  </th>
-                        <th scope="row">  </th>
-                        <th scope="row">  </th>
-                        <th scope="row"> use </th>
-                    @endif
-                    
+                  
              
                   
                     
