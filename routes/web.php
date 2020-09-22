@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use arryvdh\DomPDF\Facade;
 
 
 // Index Route
@@ -102,6 +103,12 @@ Route::group(['prefix' => 'owner'], function(){
      
      Route::get('/admin/profile', 'AdminController@profile')->name('adminProfile');
      Route::post('/admin/profile', 'AdminController@updateProfile')->name('updateProfile');
+
+     Route::get('/invoice', 'Owner\unitController@create')->name('getReport');
+
+
+ 
+
     
 
 });

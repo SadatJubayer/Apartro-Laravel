@@ -13,6 +13,8 @@ use App\Visitor;
 use App\Http\Requests\AuthRequest;
 use Illuminate\Support\Facades\Auth;
 use Brian2694\Toastr\Facades\Toastr;
+use Barryvdh\DomPDF\ServiceProvider;
+use PDF;
 
 class unitController extends Controller
 {
@@ -33,9 +35,12 @@ class unitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $units = Unit::where('ownerId', $request->session()->get('id'))->get();
+        $prds = compact('units');
+        return PDF::loadView('Backend.pages.units.pdf', $prds)->stream();
+        
     }
 
     /**
