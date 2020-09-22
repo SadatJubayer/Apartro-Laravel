@@ -31,7 +31,7 @@
                 <td > {{ $apratment->name }} </td>
                 <td > {{ $apratment->description }} </td>
             
-                <td > {{ $apratment->notice }} </td>
+                <td > {!! $apratment->notice !!} </td>
                 
                 <td>
                     <div class="btn-group">

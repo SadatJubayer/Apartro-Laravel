@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
+use Brian2694\Toastr\Facades\Toastr;
 
 class NoticeController extends Controller
 {
@@ -28,7 +29,8 @@ class NoticeController extends Controller
      */
     public function create(Apartment $apartment)
     {
-        
+        return view('Backend.pages.notice.create', compact('apartment'));
+
     }
 
     /**
@@ -37,9 +39,12 @@ class NoticeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Apartment $apartment,Request $request)
     {
-        //
+        $apartment->notice             = $request->notice;
+        $apartment->save();
+        Toastr::success('Protfolio Updated');
+        return redirect()->route('manageNotice');
     }
 
     /**
