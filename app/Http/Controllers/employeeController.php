@@ -86,4 +86,12 @@ class employeeController extends Controller
 
         return view('employee.complains')->with('complains', $complains);
     }
+    public function resolveComplain(Request $request)
+    {
+        $complain = Complain::find($request->id);
+        $complain->isResolved = 1;
+        $complain->save();
+
+        return redirect('employee/complains');
+    }
 }
