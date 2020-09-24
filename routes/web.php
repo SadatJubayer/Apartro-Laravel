@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 // Index Route
 Route::get('/', function () {
     return view('index');
@@ -59,3 +58,6 @@ Route::middleware(['adminAccess'])->group(function () {
     // Visitors
     Route::get('/admin/visitors', 'AdminController@visitors');
 });
+
+// emp
+Route::get('/employee', 'employeeController@index');
