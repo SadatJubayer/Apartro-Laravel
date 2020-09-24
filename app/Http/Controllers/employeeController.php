@@ -52,18 +52,36 @@ class employeeController extends Controller
 
         return redirect('employee/profile');
     }
+    // public function visitors()
+    // {
+
+    //     $visitor = Visitor::get();
+
+    //     $visitors = DB::table('visitors')
+    //         ->join('users', 'users.id', '=', 'visitors.userId')
+    //         ->join('units', 'units.id', '=', 'visitors.unitId')
+    //         ->select('visitors.*', 'users.username AS toWhom', 'units.name AS unitName')
+            
+    //         ->get();
+
+    //     return view('employee.visitors')->with('visitors', $visitors);
+    // }
     public function visitors()
     {
-
-        // $visitor = Visitor::get();
-
-        $visitors = DB::table('visitors')
-            ->join('users', 'users.id', '=', 'visitors.userId')
-            ->join('units', 'units.id', '=', 'visitors.unitId')
-            ->select('visitors.*', 'users.username AS toWhom', 'units.name AS unitName')
-            ->get();
-
+        $visitors = Visitor::all();
         return view('employee.visitors')->with('visitors', $visitors);
+    }
+    public function addVisitors(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $visitor = new Visitor();
+        $visitor->name = $request->name;
+        $visitor->save();
+
+        return redirect('employee/visitors');
     }
     public function expenses()
     {
