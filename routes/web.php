@@ -62,7 +62,7 @@ Route::middleware(['adminAccess'])->group(function () {
 
 
 });
-
+Route::middleware(['ownerAccess'])->group(function () {
 Route::group(['prefix' => 'owner'], function(){
     Route::get('/', 'ownerController@index')->name('ownerDashboard');
     Route::post('/{complain:id}', 'ownerController@update')->name('complainUpdate');
@@ -107,7 +107,7 @@ Route::group(['prefix' => 'owner'], function(){
      Route::get('/invoice', 'Owner\unitController@create')->name('getReport');
 
 
- 
+    });
 
     
 

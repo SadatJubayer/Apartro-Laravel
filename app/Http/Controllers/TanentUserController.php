@@ -50,7 +50,7 @@ class TanentUserController extends Controller
        $tanent->email= $request ->email;
        $tanent->gender= $request->gender; 
        
-       if ( $request->image )
+       if ( $request->image ) 
        {
            $image = $request->file('image');
            $img = time() .Str::random(12). '.' . $image->getClientOriginalExtension();
@@ -59,6 +59,7 @@ class TanentUserController extends Controller
            $tanent->image = $img;
        }
        $tanent->save();
+       Toastr::success('Tanent Created');
        return redirect()->route('ownerDashboard');
     }
 

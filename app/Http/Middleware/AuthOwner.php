@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AuthAdmin 
+class AuthOwner
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class AuthAdmin
      */
     public function handle($request, Closure $next)
     {
-        if ($request->session()->has('username') && $request->session()->get('role') == 'admin') {
+        if ($request->session()->has('username') && $request->session()->get('role') == 'owner') {
             return $next($request);
         } else {
             return redirect('/login')->withErrors('Not authorized! Please Login.');

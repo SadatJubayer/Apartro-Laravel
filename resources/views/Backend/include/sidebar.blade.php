@@ -48,9 +48,13 @@
         </ul>
       </li>
 
-      <li class="sidebar-item"> <a href="{{route('getReport')}}" class="sidebar-link has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Get Units Data </span></a>
-        
-      </li>  
+      
+      <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Units Data</span></a>
+        <ul aria-expanded="false" class="collapse  first-level">
+        <li class="sidebar-item"><a href="{{route('getReport')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Get Units Data</span></a></li>
+        {{-- <li class="sidebar-item"><a href="{{route('createNotice')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Create Notices</span></a></li> --}}
+        </ul>
+      </li>
         
    </ul>
      
