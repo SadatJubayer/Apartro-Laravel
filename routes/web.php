@@ -64,3 +64,6 @@ Route::middleware(['adminAccess'])->group(function () {
     Route::get('/employee/visitors', 'employeeController@visitors');
     // Expenses
     Route::get('/employee/expenses', 'employeeController@expenses');
+    // emp Profile
+    Route::get('/employee/profile', 'employeeController@profile');
+    Route::post('/employee/profile', 'employeeController@updateProfile');
