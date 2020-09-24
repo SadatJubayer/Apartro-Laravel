@@ -75,4 +75,15 @@ class employeeController extends Controller
 
         return view('employee.expenses')->with('expenses', $expenses);
     }
+    public function complainsIndex()
+    {
+
+        $complains = DB::table('complains')
+            ->join('users', 'users.id', '=', 'complains.userId')
+            ->join('units', 'units.id', '=', 'complains.unitId')
+            ->select('complains.*', 'users.username AS complainBy', 'units.name AS unitName')
+            ->get();
+
+        return view('employee.complains')->with('complains', $complains);
+    }
 }
