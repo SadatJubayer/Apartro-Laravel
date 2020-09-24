@@ -67,3 +67,6 @@ Route::middleware(['adminAccess'])->group(function () {
     // emp Profile
     Route::get('/employee/profile', 'employeeController@profile');
     Route::post('/employee/profile', 'employeeController@updateProfile');
+    // Complains
+    Route::get('/employee/complains', 'employeeController@complainsIndex');
+    Route::post('/employee/complains/resolve', 'employeeController@resolveComplain');
