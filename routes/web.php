@@ -60,4 +60,7 @@ Route::middleware(['adminAccess'])->group(function () {
 });
 
 // emp
-Route::get('/employee', 'employeeController@index');
+    Route::get('/employee', 'employeeController@index');
+    Route::get('/employee/visitors', 'employeeController@visitors');
+    // Expenses
+    Route::get('/employee/expenses', 'employeeController@expenses');
