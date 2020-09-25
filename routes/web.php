@@ -8,6 +8,9 @@ use arryvdh\DomPDF\Facade;
 Route::get('/', function () {
     return view('index');
 });
+// Route::get('/','SearchController@index');
+
+// Route::get('/search','SearchController@search');
 
 // Auth Routes
 Route::get('/login', 'AuthController@loginView');
@@ -65,6 +68,8 @@ Route::middleware(['adminAccess'])->group(function () {
 Route::middleware(['ownerAccess'])->group(function () {
     Route::get('/create', 'TanentUserController@create')->name('createTanentsusers');
     Route::post('/create', 'TanentUserController@storetanent')->name('storeTanentsusers');
+    Route::get('/tanent', 'Owner\TanentController@create')->name('createTanent');
+    Route::post('/tanent', 'Owner\TanentController@store')->name('storeTanents');
 Route::group(['prefix' => 'owner'], function(){
     Route::get('/', 'ownerController@index')->name('ownerDashboard');
     Route::post('/{complain:id}', 'ownerController@update')->name('complainUpdate');
@@ -72,8 +77,7 @@ Route::group(['prefix' => 'owner'], function(){
     Route::get('/units/{unit:id}', 'Owner\unitController@edit')->name('editUnits');
     Route::post('/units/{unit:id}', 'Owner\unitController@update')->name('updateUnits');
     Route::get('/Managetanent', 'Owner\TanentController@index')->name('manageTanent');
-    Route::get('/tanent', 'Owner\TanentController@create')->name('createTanent');
-    Route::post('/tanent', 'Owner\TanentController@store')->name('storeTanents');
+    
     Route::get('/edit/{tanent:id}', 'Owner\TanentController@edit')->name('editTanents');
     Route::post('/edit/{tanent:id}', 'Owner\TanentController@update')->name('updateTanents');
     Route::post('/delete/{tanent:id}', 'Owner\TanentController@destroy')->name('deleteTanents');

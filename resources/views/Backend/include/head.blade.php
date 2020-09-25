@@ -4,7 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-   
+    <meta name="_token" content="{{ csrf_token() }}">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     
  
     <title>Aparto &#8211; An Apartment Management System</title>
@@ -13,6 +17,7 @@
     <!-- Custom CSS -->
     <link href="{{ asset('backend/dist/css/style.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    
     
 
    

@@ -118,3 +118,35 @@ $(function() {
         }
     });
 });
+
+// $(".save-data").click(function(event){
+//     event.preventDefault();
+
+//     let userId = $("input[name=userId]").val();
+//     let rantedUnit = $("input[name=rantedUnit]").val();
+//     let rent = $("input[name=rent]").val();
+//     let nid = $("input[name=nid]").val();
+//     let phone = $("input[name=phone]").val();
+//     let address = $("input[name=address]").val();
+//     let _token   = $('meta[name="csrf-token"]').attr('content');
+
+//     $.ajax({
+//       url: "/tanent",
+//       type:"POST",
+//       data:{
+//         userId:userId,
+//         rantedUnit:rantedUnit,
+//         nid:nid,
+//         phone:phone,
+//         address:address,
+//         _token: _token
+//       },
+//       success:function(response){
+//         console.log(response);
+//         if(response) {
+//           $('.success').text(response.success);
+//           $("#ajaxform")[0].reset();
+//         }
+//       },
+//      });
+// });
