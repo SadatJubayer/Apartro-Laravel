@@ -76,6 +76,7 @@ My Profile
                         </div>
                         @endif
                         <li class="list-group-item">
+                            <input type="text" class='d-none' name="id" value="{{ $user->id}}" id="">
                             <input type="text" disabled value='{{ $user->username}}' name="username"
                                 placeholder="username" class="form-control" />
                             <div class="form-text text-danger">You can't change your usernmae</div>

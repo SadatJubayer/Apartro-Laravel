@@ -21,7 +21,7 @@ Route::middleware(['adminAccess'])->group(function () {
     // Admin Profile
     Route::get('/admin', 'AdminController@index');
     Route::get('/admin/profile', 'AdminController@profile');
-    Route::post('/admin/profile', 'AdminController@updateProfile');
+    Route::post('/admin/profile', 'AdminController@updateProfile')->middleware('validateUser');
 
     // Users
     Route::get('/admin/users', 'AdminController@usersIndex');
