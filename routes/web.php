@@ -77,8 +77,12 @@ Route::middleware(['employeeAccess'])->group(function () {
     // Complains
     Route::get('/employee/complains', 'employeeController@complainsIndex');
     Route::post('/employee/complains/resolve', 'employeeController@resolveComplain');
-    // new
+    // users list
     Route::get('/employee/users', 'employeeController@users');
+    // notices
+    Route::get('/employee/notices', 'employeeController@notices');
+    Route::post('/employee/notices/new', 'employeeController@addNotices');
+
 });
 
 

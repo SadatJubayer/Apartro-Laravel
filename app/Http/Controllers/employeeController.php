@@ -162,4 +162,10 @@ class employeeController extends Controller
 
         return redirect('employee/bills');
     }
+    public function notices()
+    {
+        // return Apartment::all();
+        $notices = Apartment::all();
+        return view('employee.notices')->with('notices', $notices);
+    }
 }
