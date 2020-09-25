@@ -31,6 +31,7 @@ Route::middleware(['adminAccess'])->group(function () {
     Route::post('/admin/users/deActiveUser', 'AdminController@deActiveUser');
     Route::post('/admin/users/updateUser', 'AdminController@updateUser');
     Route::post('/admin/users/destroyUser', 'AdminController@destroyUser');
+    Route::post('/admin/users/getUserDetials', 'AdminController@getUserDetials');
 
     // Apartment
     Route::post('/admin/addApartment', 'AdminController@createApartment');

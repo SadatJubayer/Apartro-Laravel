@@ -14,6 +14,7 @@ use App\Unit;
 use App\Complain;
 use App\Visitor;
 
+
 class AdminController extends Controller
 {
 
@@ -79,6 +80,18 @@ class AdminController extends Controller
         $users = User::all();
         return view('admin.users')->with('users', $users);
     }
+
+    public function getUserDetials(Request $request)
+    {
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://localhost:5000/api/user/admin', []);
+        echo $res->getStatusCode();
+        // "200"
+        echo $res->getHeader('content-type')[0];
+        // 'application/json; charset=utf8'
+        echo $res->getBody();
+    }
+
     public function addUser()
     {
         return view('admin.addUser');
