@@ -168,4 +168,19 @@ class employeeController extends Controller
         $notices = Apartment::all();
         return view('employee.notices')->with('notices', $notices);
     }
+    public function addNotices(Request $request)
+    {
+        $request->validate([
+            'notice' => 'required',
+        ]);
+
+        $notice = new Apartment();
+        $notice->name = $request->name;
+        $notice->description = $request->description;
+        $notice->notice = $request->notice;
+        $notice->save();
+
+        return redirect('employee/notices');
+    }
+
 }

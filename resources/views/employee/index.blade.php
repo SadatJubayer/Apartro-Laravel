@@ -31,6 +31,23 @@ Admin Home
                 </a>
             </div>
         </div>
+        <!-- Notices -->
+        <div class="col-lg-4">
+            <div class="card bg-info text-white mt-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="display-4 font-weight-bold">
+                            {{$data['allCounts'][3]->count ?? ''}}
+                        </div>
+                        <h3>Notices</h3>
+                    </div>
+                    <img height="80px" src="{{asset('/images/notices.png')}}" alt="" />
+                </div>
+                <a href="/employee/notices" class="card-footer text-right">
+                    See Details
+                </a>
+            </div>
+        </div>
 
 
         

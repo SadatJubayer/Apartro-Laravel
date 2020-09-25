@@ -1,5 +1,5 @@
 @extends('partials.layout')
-@extends('admin.navbar')
+@extends('employee.navbar')
 
 @section('title')
 Expense
