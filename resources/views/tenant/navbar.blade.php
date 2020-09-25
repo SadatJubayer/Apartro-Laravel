@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
     <div class="container">
-        <a class="navbar-brand font-weight-bold" href="/admin">
+        <a class="navbar-brand font-weight-bold" href="/tenant">
             <img src="{{asset('/images/logo-sm.svg')}}" height="35" alt="" loading="lazy" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"

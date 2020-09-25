@@ -20,7 +20,7 @@ Tenant Home
                 <h3 class="alert-heading">
                     {{$data['apartment']->name ?? ''}}
                 </h3>
-                <button onclick="location.href='/admin/editApartment';" type="button" class="btn bg-success text-white"
+                <button onclick="location.href='/tenant/editApartment';" type="button" class="btn bg-success text-white"
                     id="apartEditBtn">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="white"
                         xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +92,7 @@ Tenant Home
     <!-- Cards -->
 
     <div class="row adminCards">
-        <!-- Users -->
+        <!-- Notice -->
         <div class="col-lg-4">
             <div class="card bg-info text-white mt-4">
                 <div class="card-body d-flex justify-content-between align-items-center">
@@ -100,18 +100,18 @@ Tenant Home
                         <div class="display-4 font-weight-bold">
                             {{$data['allCounts'][0]->count ?? ''}}
                         </div>
-                        <h3>Total Users</h3>
+                        <h3>Notice</h3>
                     </div>
                     <img height="80px" src="{{asset('/images/user.png')}}" alt="" />
                 </div>
-                <a href="/admin/users" class="card-footer text-right">
+                <a href="/tenant/notice" class="card-footer text-right">
                     See Details
                 </a>
             </div>
         </div>
 
 
-        <!-- Floors -->
+        <!-- Visitors -->
         <div class="col-lg-4">
             <div class="card bg-info text-white mt-4">
                 <div class="card-body d-flex justify-content-between align-items-center">
@@ -119,16 +119,17 @@ Tenant Home
                         <div class="display-4 font-weight-bold">
                             {{$data['allCounts'][1]->count ?? ''}}
                         </div>
-                        <h3>Total Floors</h3>
+                        <h3>Visitors</h3>
                     </div>
                     <img height="80px" src="{{asset('/images/floor.png')}}" alt="" />
                 </div>
-                <a href="/admin/floors" class="card-footer text-right">
+                <a href="/tenant/visitors" class="card-footer text-right">
                     See Details
                 </a>
             </div>
         </div>
-        <!-- Units -->
+       
+        <!-- Total expenses -->
         <div class="col-lg-4">
             <div class="card bg-info text-white mt-4">
                 <div class="card-body d-flex justify-content-between align-items-center">
@@ -136,17 +137,17 @@ Tenant Home
                         <div class="display-4 font-weight-bold">
                             {{$data['allCounts'][2]->count ?? ''}}
                         </div>
-                        <h3>Total units</h3>
+                        <h3> Total Expenses</h3>
                     </div>
                     <img height="80px" src="{{asset('/images/unit.png')}}" alt="" />
                 </div>
-                <a href="/admin/units" class="card-footer text-right">
+                <a href="/tenant/expenses" class="card-footer text-right">
                     See Details
                 </a>
             </div>
         </div>
 
-        <!-- Expenses -->
+        <!-- total Bills -->
         <div class="col-lg-4">
             <div class="card bg-info text-white mt-4">
                 <div class="card-body d-flex justify-content-between align-items-center">
@@ -154,11 +155,11 @@ Tenant Home
                         <div class="display-4 font-weight-bold">
                             {{$data['allCounts'][3]->count ?? ''}}
                         </div>
-                        <h3>Total Expenses</h3>
+                        <h3>Total Bills</h3>
                     </div>
                     <img height="80px" src="{{asset('/images/expenses.png')}}" alt="" />
                 </div>
-                <a href="/admin/expenses" class="card-footer text-right">
+                <a href="/tenant/bills" class="card-footer text-right">
                     See Details
                 </a>
             </div>
@@ -176,7 +177,7 @@ Tenant Home
                     </div>
                     <img height="80px" src="{{asset('/images/complain.png')}}" alt="" />
                 </div>
-                <a href="/admin/complains" class="card-footer text-right">
+                <a href="/tenant/complains" class="card-footer text-right">
                     See Details
                 </a>
             </div>
@@ -193,7 +194,7 @@ Tenant Home
                     </div>
                     <img height="80px" src="{{asset('/images/visitor.png')}}" alt="" />
                 </div>
-                <a href="/admin/visitors" class="card-footer text-right">
+                <a href="/tenant/visitors" class="card-footer text-right">
                     See Details
                 </a>
             </div>
