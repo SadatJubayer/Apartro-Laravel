@@ -42,6 +42,7 @@ Route::get('/tenant/visitors', 'TenantController@visitors');
 
  //Tenant Profile
  Route::get('/tenant/profile', 'TenantController@profile');
+ Route::post('/tenant/profile', 'TenantController@updateProfile');
 
 
 
