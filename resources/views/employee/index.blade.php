@@ -22,11 +22,11 @@ Admin Home
                         <div class="display-4 font-weight-bold">
                             {{$data['allCounts'][0]->count ?? ''}}
                         </div>
-                        <h3>Total Users</h3>
+                        <h3>Users List</h3>
                     </div>
                     <img height="80px" src="{{asset('/images/user.png')}}" alt="" />
                 </div>
-                <a href="/admiemployee/users" class="card-footer text-right">
+                <a href="/employee/users" class="card-footer text-right">
                     See Details
                 </a>
             </div>

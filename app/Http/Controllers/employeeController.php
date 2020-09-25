@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\User;
 use App\Complain;
 use App\Visitor;
 use App\Expense;
-use DB;
+// use DB;
 
 class employeeController extends Controller
 {
@@ -86,35 +87,34 @@ class employeeController extends Controller
 
         return redirect('employee/visitors');
     }
-    public function expenses()
-    {
-
-        $expenses = DB::table('expenses')
-            ->join('users', 'users.id', '=', 'expenses.userId')
-            ->select('expenses.*', 'users.username AS expenseBy')
-            ->get();
-
-        return view('employee.expenses')->with('expenses', $expenses);
-    }
     // public function expenses()
     // {
-    //     $expenses = Expense::all();
+
+    //     $expenses = DB::table('expenses')
+    //         ->join('users', 'users.id', '=', 'expenses.userId')
+    //         ->select('expenses.*', 'users.username AS expenseBy')
+    //         ->get();
+
     //     return view('employee.expenses')->with('expenses', $expenses);
     // }
-    // public function addExpenses(Request $request)
-    // {
-    //     $request->validate([
-    //         'cost' => 'required',
-    //     ]);
+    public function expenses()
+    {
+        $expenses = Expense::all();
+        return view('employee.expenses')->with('expenses', $expenses);
+    }
+    public function addExpenses(Request $request)
+    {
+        $request->validate([
+            'cost' => 'required',
+        ]);
 
-    //     $expense = new Expense();
-    //     $expense->description = $request->description;
-    //     $expense->cost = $request->cost;
+        $expense = new Expense();
+        $expense->description = $request->description;
+        $expense->cost = $request->cost;
+        $expense->save();
 
-    //     $expense->save();
-
-    //     return redirect('employee/expenses');
-    // }
+        return redirect('employee/expenses');
+    }
     public function complainsIndex()
     {
 
@@ -133,6 +133,12 @@ class employeeController extends Controller
         $complain->save();
 
         return redirect('employee/complains');
+    }
+    public function users()
+    {
+        $users = User::where('role','owner')->orwhere('role','tenant') ->get();
+       
+        return view('employee.users')->with('users', $users);
     }
     
 }
