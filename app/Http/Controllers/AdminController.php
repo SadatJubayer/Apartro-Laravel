@@ -12,6 +12,7 @@ use App\Apartment;
 use App\Floor;
 use App\Unit;
 use App\Complain;
+use App\Expense;
 use App\Visitor;
 
 use Barryvdh\DomPDF\ServiceProvider;
@@ -313,7 +314,31 @@ class AdminController extends Controller
             ->select('expenses.*', 'users.username AS expenseBy')
             ->get();
 
-        return view('admin.expenses')->with('expenses', $expenses);
+        $users = DB::table('users')
+            ->get();
+
+        $data = [
+            'expenses' => $expenses,
+            'users' => $users,
+        ];
+
+        return view('admin.expenses')->with('data', $data);
+    }
+
+    public function addExpense(Request $request)
+    {
+        $expense = new Expense();
+
+        $expense->description = $request->description;
+        $expense->cost = $request->cost;
+        $expense->userId = $request->userId;
+
+        try {
+            $expense->save();
+            return response()->json(['isSuccess' => true]);
+        } catch (\Throwable $th) {
+            return response()->json(['isSuccess' => false]);
+        }
     }
 
     public function complainsIndex()

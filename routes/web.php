@@ -52,6 +52,7 @@ Route::middleware(['adminAccess'])->group(function () {
 
     // Expenses
     Route::get('/admin/expenses', 'AdminController@expenses');
+    Route::post('/admin/addExpense', 'AdminController@addExpense');
 
     // Complains
     Route::get('/admin/complains', 'AdminController@complainsIndex');
