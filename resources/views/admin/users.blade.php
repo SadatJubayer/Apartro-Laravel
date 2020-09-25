@@ -314,6 +314,13 @@ All Users
                 <input  class="form-control" placeholder="username" type="text" id="userNameToFind">
                 <button class="btn btn-primary mt-2" type="submit">Get User Details</button>
             </form>
+            <ul id='result' class="list-group">
+                {{-- <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li> --}}
+              </ul>
         </div>
     </div>
 </div>
@@ -334,17 +341,38 @@ form_el.addEventListener("submit", function(evt) {
         return;
     }
     axios
-        .post('/admin/users/getUserDetials', {
-            username: username,
-        })
-        .then(function(response) {
-            console.log(response.data);
+    .post('/admin/users/getUserDetials', {
+        username: username,
+    })
+    .then(function(response) {
+        console.log(response.data);
+
+
+        if(!response.data) {
+            alert('username not found')
+        }
+
+        const output = document.getElementById("result");
+
+        let markup = ``;
+
+        for (const [key, value] of Object.entries(response.data)) {
+
+            markup = markup +  `<li class="list-group-item"> ${key} -  ${value} </li>`;
+        //  console.log(key, value);
+
+         }
+        console.log(markup);
+
+        output.innerHTML = markup;
+
+
         })
         .catch(function(error) {
+            alert('Server error 😒')
             console.log(error);
         });
 });
-
 
 
 
