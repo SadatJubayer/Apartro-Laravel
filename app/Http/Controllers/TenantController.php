@@ -79,4 +79,26 @@ class TenantController extends Controller
         return view('tenant.expenses')->with('expenses', $expenses);
     }
 
+
+
+    public function complainsIndex()
+    {
+
+        $complains = DB::table('complains')
+
+            ->join('users', 'users.id', '=', 'complains.userId')
+            ->join('units', 'units.id', '=', 'complains.unitId')
+            ->select('complains.*', 'users.username AS complainBy', 'units.name AS unitName')
+            ->get();
+
+
+
+           return view('tenant.complains')->with('complains', $complains);
+
+
+
+        //$complains = complains::where('userId', '3') ->get();
+        //return view('tenant.complains', compact('complains'));
+    }
+
 }

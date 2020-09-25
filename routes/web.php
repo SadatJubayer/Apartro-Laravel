@@ -35,6 +35,9 @@ Route::get('/tenant/visitors', 'TenantController@visitors');
  // Expenses
  Route::get('/tenant/expenses', 'TenantController@expenses');
 
+ //complain
+ Route::get('/tenant/complains', 'TenantController@complainsIndex');
+
 
 });
 
