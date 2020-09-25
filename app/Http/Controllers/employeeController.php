@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Complain;
 use App\Visitor;
+use App\Expense;
 use DB;
 
 class employeeController extends Controller
@@ -79,6 +80,8 @@ class employeeController extends Controller
 
         $visitor = new Visitor();
         $visitor->name = $request->name;
+        $visitor->phone= $request->phone;
+        $visitor->address= $request->address;
         $visitor->save();
 
         return redirect('employee/visitors');
@@ -93,6 +96,25 @@ class employeeController extends Controller
 
         return view('employee.expenses')->with('expenses', $expenses);
     }
+    // public function expenses()
+    // {
+    //     $expenses = Expense::all();
+    //     return view('employee.expenses')->with('expenses', $expenses);
+    // }
+    // public function addExpenses(Request $request)
+    // {
+    //     $request->validate([
+    //         'cost' => 'required',
+    //     ]);
+
+    //     $expense = new Expense();
+    //     $expense->description = $request->description;
+    //     $expense->cost = $request->cost;
+
+    //     $expense->save();
+
+    //     return redirect('employee/expenses');
+    // }
     public function complainsIndex()
     {
 
@@ -112,4 +134,5 @@ class employeeController extends Controller
 
         return redirect('employee/complains');
     }
+    
 }

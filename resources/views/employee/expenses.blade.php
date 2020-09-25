@@ -1,5 +1,5 @@
 @extends('partials.layout')
-@extends('employee.navbar')
+@extends('admin.navbar')
 
 @section('title')
 Expense
@@ -32,7 +32,9 @@ Expense
                     @endforeach
                 </tbody>
             </table>
+            
         </div>
     </div>
 </div>
 @endsection
+

@@ -60,15 +60,20 @@ Route::middleware(['adminAccess'])->group(function () {
 });
 
 // emp
+Route::middleware(['employeeAccess'])->group(function () {
     Route::get('/employee', 'employeeController@index');
     // Visitors
     Route::get('/employee/visitors', 'employeeController@visitors');
     Route::post('/employee/visitors/new', 'employeeController@addVisitors');
     // Expenses
     Route::get('/employee/expenses', 'employeeController@expenses');
+    Route::post('/employee/expenses/new', 'employeeController@addExpenses');
     // emp Profile
     Route::get('/employee/profile', 'employeeController@profile');
     Route::post('/employee/profile', 'employeeController@updateProfile');
     // Complains
     Route::get('/employee/complains', 'employeeController@complainsIndex');
     Route::post('/employee/complains/resolve', 'employeeController@resolveComplain');
+});
+
+

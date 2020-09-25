@@ -69,6 +69,14 @@ Visitors
                                 <label for="name" class="form-label">Visitors Name</label>
                                 <input required name="name" type="text" class="form-control" id="name" />
                             </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input required name="phone" type="text" class="form-control" id="phone" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input required name="address" type="text" class="form-control" id="address" />
+                            </div>
                             <button type="submit" class="btn btn-success text-center">
                                 Add New Visitors
                             </button>
