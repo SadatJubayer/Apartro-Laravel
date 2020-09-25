@@ -362,8 +362,6 @@ form_el.addEventListener("submit", function(evt) {
         //  console.log(key, value);
 
          }
-        console.log(markup);
-
         output.innerHTML = markup;
 
 

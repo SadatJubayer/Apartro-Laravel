@@ -59,4 +59,7 @@ Route::middleware(['adminAccess'])->group(function () {
 
     // Visitors
     Route::get('/admin/visitors', 'AdminController@visitors');
+
+    // Get PDF
+    Route::get('/admin/getPDF', 'AdminController@getUnitReport');
 });

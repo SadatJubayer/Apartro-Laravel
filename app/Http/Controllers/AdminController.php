@@ -14,9 +14,24 @@ use App\Unit;
 use App\Complain;
 use App\Visitor;
 
+use Barryvdh\DomPDF\ServiceProvider;
+use PDF;
 
 class AdminController extends Controller
 {
+
+    public function getUnitReport(Request $request)
+    {
+        $units = DB::table('units')
+            ->join('users', 'users.id', '=', 'units.ownerId')
+            ->join('floors', 'floors.id', '=', 'units.floorId')
+            ->select('units.id', 'units.name as unitName', 'users.username as ownerName', 'users.id as userId', 'floors.id as floorId,', 'floors.name as floorName')
+            ->get();
+
+
+        $prds = compact('units');
+        return PDF::loadView('admin.getPDF', $prds)->stream();
+    }
 
     public function index(Request $request)
     {
@@ -73,13 +88,12 @@ class AdminController extends Controller
     }
 
 
-
-
     public function usersIndex()
     {
         $users = User::all();
         return view('admin.users')->with('users', $users);
     }
+
 
     public function getUserDetials(Request $request)
     {
