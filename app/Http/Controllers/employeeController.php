@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\ServiceProvider;
+use PDF;
 
 use Illuminate\Http\Request;
 use App\Apartment;
@@ -181,6 +183,12 @@ class employeeController extends Controller
         $notice->save();
 
         return redirect('employee/notices');
+    }
+    public function billReport(Request $request)
+    {
+        $bills = Bill::orderBy('id','asc')->get();
+        $prds = compact('bills');
+        return PDF::loadView('employee.billReport', $prds)->stream();
     }
 
 }

@@ -82,6 +82,8 @@ Route::middleware(['employeeAccess'])->group(function () {
     // notices
     Route::get('/employee/notices', 'employeeController@notices');
     Route::post('/employee/notices/new', 'employeeController@addNotices');
+    // report
+    Route::get('/invoice', 'employeeController@billReport')->name('getReport');
 
 });
 

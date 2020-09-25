@@ -20,8 +20,12 @@
                     <a class="nav-link" href="/employee/bills">Bills</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('getReport')}}">Bill Report</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/employee/complains">Complains</a>
                 </li>
+                
 
                 <li class="nav-item">
                     <a class="nav-link" href="/employee/visitors">Visitors</a>
