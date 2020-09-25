@@ -20,7 +20,7 @@ Expense
                     <label class="col-sm-2 col-form-label">Expense by</label>
 
                     @foreach ($data['users'] as $user)
-                        <option value="{{$user->id}}"> {{$user->username}}</option>
+                        <option id="usernameValue" value="{{$user->id}}"> {{$user->username}}</option>
                     @endforeach
                  </select>
 
@@ -41,7 +41,7 @@ Expense
                         <th scope="col">By</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="resultOutput">
                     @foreach ($data['expenses'] as $expense)
                     <tr>
                         <td>{{$expense->id}}</td>
@@ -67,17 +67,39 @@ Expense
         const description = document.getElementById("description").value;
         const cost = document.getElementById("cost").value;
         const userId = document.getElementById("userId").value;
+        const userName = document.getElementById("usernameValue").innerText;
+        const resultOutput = document.getElementById("resultOutput");
+
+        if(!userId || !description || !cost) {
+            alert('all fields are requied');
+        }
         console.log(description, cost, userId);
-
-
         axios.post('/admin/addExpense', {
             description, cost, userId
         })
         .then(function (response) {
-            console.log(response);
+            console.log(response.data);
+            if(response.data.success) {
+                const element = `
+                        <tr>
+                            <td>${response.data.last_insert_id}</td>
+                            <td>${description}</td>
+                            <td>${cost}</td>
+                            <td>${userName}</td>
+                         </tr>`;
+
+                const output = resultOutput.innerHTML + element;
+                resultOutput.innerHTML = output;
+                form_el.reset();
+
+
+            }
         })
         .catch(function (error) {
+            form_el.reset();
+            alert('something went wrong');
             console.log(error);
+
         });
     });
 </script>

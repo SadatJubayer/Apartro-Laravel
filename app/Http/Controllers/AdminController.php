@@ -335,9 +335,10 @@ class AdminController extends Controller
 
         try {
             $expense->save();
-            return response()->json(['isSuccess' => true]);
+            $expense->id;
+            return response()->json(array('success' => true, 'last_insert_id' => $expense->id), 200);
         } catch (\Throwable $th) {
-            return response()->json(['isSuccess' => false]);
+            return response()->json(['success' => false]);
         }
     }
 
