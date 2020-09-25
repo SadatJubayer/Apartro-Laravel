@@ -14,16 +14,25 @@
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" placeholder="Please Insert The UserName">
+                @error('username')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label>Password</label>
                 <input type="text" name="password" class="form-control" placeholder="Please Insert the password">
+                @error('password')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" name="email" class="form-control" placeholder="Please Insert email">
+                @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -39,6 +48,11 @@
                 <label>Image</label>
                 <input type="file" name="image" class="form-control-file">
             </div>
+
+           
+
+            
+
 
 
             

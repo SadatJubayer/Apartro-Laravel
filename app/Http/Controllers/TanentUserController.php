@@ -42,7 +42,16 @@ class TanentUserController extends Controller
      */
     public function storetanent(Request $request)
     {
-        
+        $request->validate([
+            'username'  => 'required|max:255',
+            'password'  => 'required',
+            'email'  => 'required|regex:/(.+)@(.+)\.(.+)/i|unique:users,email',
+        ],
+        $messages=[
+            'username.required'     => 'Please Insert a Caregory Name',
+            'password.required'     => 'Please Insert a Password',
+            'email.required' => 'We need to know your e-mail address!',
+        ]);
         $tanent = new User();
        $tanent->username=$request->username;
        $tanent->password=Hash::make($request->username);
