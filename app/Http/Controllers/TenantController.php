@@ -20,7 +20,6 @@ class TenantController extends Controller
     public function index(Request $request)
     {
         
-
         return view('tenant.index');
     }
 
@@ -34,7 +33,8 @@ class TenantController extends Controller
     {
 
 
-            $Bills = bills::all();
+           // $Bills = bills::all();
+           $Bills = bills::where('userId', '3') ->get();
             return view('tenant.bills', compact('Bills'));
         
             
