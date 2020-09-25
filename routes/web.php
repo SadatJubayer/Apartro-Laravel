@@ -20,8 +20,23 @@ Route::get('/logout', 'AuthController@logout');
 
 
 Route::middleware(['tanentAccess'])->group(function () {
+
+
+   //Tenant Profile 
 Route::get('/tenant', 'TenantController@index');
+Route::get('/tenant/users', 'TenantController@usersIndex');
+Route::get('/tenant/bills', 'TenantController@bills');
+Route::get('/tenant/notice', 'TenantController@notice');
+
+//Tenant vistor
+Route::get('/tenant/visitors', 'TenantController@visitors');
+
+
 });
+
+
+
+
 
 // Admin Routes
 Route::middleware(['adminAccess'])->group(function () {

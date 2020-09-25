@@ -9,25 +9,39 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/users">Users</a>
+               
+            <li class="nav-item">
+                    <a class="nav-link" href="/tenant/users">Users</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/tenant/bills">Bills</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="/tenant/notice">Notice</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/tenant/expenses">Expenses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tenant/visitors">Visitors</a>
+                </li>
+               
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/floors">Floors</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/units">Units</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/expenses">Expenses</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/complains">Complains</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/visitors">Visitors</a>
-                </li>
+                
+               
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
