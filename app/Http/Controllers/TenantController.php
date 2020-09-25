@@ -44,7 +44,8 @@ class TenantController extends Controller
     {
 
 
-            $Apartment = apartment::all();
+           // $Apartment = apartment::all();
+           $Apartment = apartment::where('adminId', '1') ->get();
             return view('tenant.notices', compact('Apartment'));
         
             
@@ -65,6 +66,17 @@ class TenantController extends Controller
 
         return view('tenant.visitors')->with('visitors', $visitors);
     }
+    
 
+    public function expenses()
+    {
+
+        $expenses = DB::table('expenses')
+            ->join('users', 'users.id', '=', 'expenses.userId')
+            ->select('expenses.*', 'users.username AS expenseBy')
+            ->get();
+
+        return view('tenant.expenses')->with('expenses', $expenses);
+    }
 
 }

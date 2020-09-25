@@ -14,19 +14,20 @@
                     <a class="nav-link" href="/tenant/users">Users</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/tenant/bills">Bills</a>
-                </li>
                
                 <li class="nav-item">
                     <a class="nav-link" href="/tenant/notice">Notice</a>
                 </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="/tenant/expenses">Expenses</a>
-                </li>
+    
                 <li class="nav-item">
                     <a class="nav-link" href="/tenant/visitors">Visitors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tenant/bills">Bills</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/tenant/expenses">Expenses</a>
                 </li>
                
                 <li class="nav-item">
