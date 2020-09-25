@@ -10,30 +10,21 @@
    </head>
    <body>
 
-    <h2 class="text-center"> All Units List</h2>
+    <h2 class="text-center text-danger mb-4"> All un-resolved Complains</h2>
 
-    <table class="table mt-2">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-                        <th scope="col">Complain by</th>
-                        <th scope="col">Unit</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach( $complains as $complain )
-            <tr>
-                <td>{{$complain->id}}</td>
-                <td>{{$complain->complainBy}}</td>
-                <td>{{$complain->unitName}}</td>
-                <td>{{$complain->description}}</td>
+    @foreach( $complains as $complain )
 
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
+    <div class="text-danger ml-4 h3">#{{$complain->id}}</div>
+    <div class="card py-2 px-4">
+        <div class="card-body border border-danger">
+            <li class="list-group-item">Complain by - <strong>{{$complain->complainBy}}</strong> </li>
+            <li class="list-group-item">Unit - <strong>{{$complain->unitName}}</strong></li>
+            <li class="list-group-item">Description - <strong>{{$complain->description}}</strong></li>
+        </div>
+    </div>
+
+    @endforeach
+
    </body>
    </html>
 
