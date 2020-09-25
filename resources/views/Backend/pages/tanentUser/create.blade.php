@@ -8,7 +8,7 @@
         <form action="{{ route('storeTanentsusers') }}" method="POST" enctype="multipart/form-data">
             @csrf                	
             
-
+ 
            
 
             <div class="form-group">
@@ -23,7 +23,7 @@
 
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Please Insert Companys Facebook Link">
+                <input type="email" name="email" class="form-control" placeholder="Please Insert email">
             </div>
 
             <div class="form-group">
@@ -43,9 +43,8 @@
 
             
             <div class="form-group">
-              <input type="submit" name="addSlider" value="Add Tanent" class="btn btn-primary">
+              <input type="submit" name="addSlider" value="Add Description" class="btn btn-primary">
           </div>
-             
 
         </form>
         <!-- Create New Category Form End -->

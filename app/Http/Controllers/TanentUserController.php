@@ -26,7 +26,7 @@ class TanentUserController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -40,9 +40,10 @@ class TanentUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storetanent(Request $request)
     {
-        $tanent = new user();
+        
+        $tanent = new User();
        $tanent->username=$request->username;
        $tanent->password=Hash::make($request->username);
        $tanent->role = 'tenant';

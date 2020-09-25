@@ -63,6 +63,8 @@ Route::middleware(['adminAccess'])->group(function () {
 
 });
 Route::middleware(['ownerAccess'])->group(function () {
+    Route::get('/create', 'TanentUserController@create')->name('createTanentsusers');
+    Route::post('/create', 'TanentUserController@storetanent')->name('storeTanentsusers');
 Route::group(['prefix' => 'owner'], function(){
     Route::get('/', 'ownerController@index')->name('ownerDashboard');
     Route::post('/{complain:id}', 'ownerController@update')->name('complainUpdate');
@@ -77,8 +79,7 @@ Route::group(['prefix' => 'owner'], function(){
     Route::post('/delete/{tanent:id}', 'Owner\TanentController@destroy')->name('deleteTanents');
     
     
-    Route::get('/tanentUser', 'TanentUserController@create')->name('createTanentsusers');
-    Route::post('/tanentUser', 'TanentUserController@store')->name('storeTanentsusers');
+    
     Route::get('/visitors', 'TanentUserController@index')->name('visitors');
 
    
@@ -86,6 +87,7 @@ Route::group(['prefix' => 'owner'], function(){
         Route::get('/manage', 'Backend\Tanent@index')->name('manageBills');
        
     });
+    
 
     Route::group(['prefix' => 'expenses'], function(){
         Route::get('/manage', 'Backend\Tanent@expense')->name('manageExpense');
