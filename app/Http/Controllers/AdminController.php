@@ -327,7 +327,19 @@ class AdminController extends Controller
 
         return view('admin.complains')->with('complains', $complains);
     }
+    public function getComplainsReport()
+    {
 
+        $complains = DB::table('complains')
+            ->join('users', 'users.id', '=', 'complains.userId')
+            ->join('units', 'units.id', '=', 'complains.unitId')
+            ->select('complains.*', 'users.username AS complainBy', 'units.name AS unitName')
+            ->where('complains.isResolved', 0)
+            ->get();
+
+        $prds = compact('complains');
+        return PDF::loadView('admin.getComplainsPDF', $prds)->stream();
+    }
     public function resolveComplain(Request $request)
     {
         $complain = Complain::find($request->id);

@@ -81,8 +81,15 @@ Complains
                 </tbody>
             </table>
         </div>
+
+
     </div>
 
+    <div class="row mt-5">
+        <div class="col-6 mx-auto text-center">
+            <a class="btn btn-danger" href="/admin/getComplainsPDF">Get Issues report </a>
+        </div>
+    </div>
 
 </div>
 @endsection

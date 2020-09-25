@@ -62,4 +62,5 @@ Route::middleware(['adminAccess'])->group(function () {
 
     // Get PDF
     Route::get('/admin/getPDF', 'AdminController@getUnitReport');
+    Route::get('/admin/getComplainsPDF', 'AdminController@getComplainsReport');
 });
