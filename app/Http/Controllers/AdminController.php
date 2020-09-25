@@ -84,12 +84,11 @@ class AdminController extends Controller
     public function getUserDetials(Request $request)
     {
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', 'http://localhost:5000/api/user/admin', []);
-        echo $res->getStatusCode();
-        // "200"
-        echo $res->getHeader('content-type')[0];
-        // 'application/json; charset=utf8'
+        $url =  'http://localhost:5000/api/user/' . $request->username;
+        $res = $client->request('GET', $url, []);
         echo $res->getBody();
+
+        return  $res->getBody()->getContents();
     }
 
     public function addUser()

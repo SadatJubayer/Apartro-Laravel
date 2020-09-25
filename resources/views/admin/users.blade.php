@@ -306,6 +306,15 @@ All Users
             <p class="text-center text-danger">No users found</p>
             @endif
         </div>
+
+    </div>
+    <div class="row mt-3">
+        <div class="col-6 mx-auto">
+            <form id="getUserFrom">
+                <input  class="form-control" placeholder="username" type="text" id="userNameToFind">
+                <button class="btn btn-primary mt-2" type="submit">Get User Details</button>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -314,6 +323,31 @@ All Users
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
+
+const form_el = document.getElementById("getUserFrom");
+form_el.addEventListener("submit", function(evt) {
+    evt.preventDefault();
+
+    const username = document.getElementById("userNameToFind").value;
+    if(!username) {
+        alert('username is required')
+        return;
+    }
+    axios
+        .post('/admin/users/getUserDetials', {
+            username: username,
+        })
+        .then(function(response) {
+            console.log(response.data);
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+});
+
+
+
+
 
 const searchUser = (e) => {
     axios
