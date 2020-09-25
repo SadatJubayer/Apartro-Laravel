@@ -53,6 +53,23 @@ Admin Home
                 </a>
             </div>
         </div>
+        <!-- Bills -->
+        <div class="col-lg-4">
+            <div class="card bg-info text-white mt-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="display-4 font-weight-bold">
+                            {{$data['allCounts'][3]->count ?? ''}}
+                        </div>
+                        <h3>Total Bills</h3>
+                    </div>
+                    <img height="80px" src="{{asset('/images/expenses.png')}}" alt="" />
+                </div>
+                <a href="/employee/bills" class="card-footer text-right">
+                    See Details
+                </a>
+            </div>
+        </div>
 
         <!-- Complains -->
         <div class="col-lg-4">

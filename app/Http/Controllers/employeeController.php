@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use App\Apartment;
 use App\User;
 use App\Complain;
 use App\Visitor;
 use App\Expense;
+use App\Bill;
 // use DB;
 
 class employeeController extends Controller
@@ -140,5 +142,24 @@ class employeeController extends Controller
        
         return view('employee.users')->with('users', $users);
     }
-    
+    public function bills()
+    {
+        $bills = Bill::all();
+        return view('employee.bills')->with('bills', $bills);
+    }
+    public function addBills(Request $request)
+    {
+        $request->validate([
+            'cost' => 'required',
+        ]);
+
+        $bill = new Bill();
+        $bill->description = $request->description;
+        $bill->cost = $request->cost;
+        $bill->month = $request->month;
+        $bill->year = $request->year;
+        $bill->save();
+
+        return redirect('employee/bills');
+    }
 }

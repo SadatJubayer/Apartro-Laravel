@@ -17,6 +17,9 @@
                     <a class="nav-link" href="/employee/expenses">Expenses</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/employee/bills">Bills</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/employee/complains">Complains</a>
                 </li>
 

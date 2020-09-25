@@ -68,6 +68,9 @@ Route::middleware(['employeeAccess'])->group(function () {
     // Expenses
     Route::get('/employee/expenses', 'employeeController@expenses');
     Route::post('/employee/expenses/new', 'employeeController@addExpenses');
+    // Bills
+    Route::get('/employee/bills', 'employeeController@bills');
+    Route::post('/employee/bills/new', 'employeeController@addBills');
     // emp Profile
     Route::get('/employee/profile', 'employeeController@profile');
     Route::post('/employee/profile', 'employeeController@updateProfile');
