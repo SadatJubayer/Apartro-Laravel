@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\ServiceProvider;
+use PDF;
 
 use Illuminate\Http\Request;
 use App\User;
@@ -33,7 +35,7 @@ class TenantController extends Controller
     {
 
 
-           // $Bills = bills::all();
+           
            $Bills = bills::where('userId', '3') ->get();
             return view('tenant.bills', compact('Bills'));
         
@@ -57,7 +59,7 @@ class TenantController extends Controller
     {
 
         // $visitor = Visitor::get();
-
+       
         $visitors = DB::table('visitors')
             ->join('users', 'users.id', '=', 'visitors.userId')
             ->join('units', 'units.id', '=', 'visitors.unitId')
@@ -77,6 +79,18 @@ class TenantController extends Controller
             ->get();
 
         return view('tenant.expenses')->with('expenses', $expenses);
+    }
+
+    public function addComplain(Request $request){
+        $complain = new Complain();
+        $complain->userId = $request->userId;
+        $complain->unitId = $request->unitId;
+        $complain->description = $request->description;
+        $complain->isResolved = false;
+        $complain->save();
+
+
+        return redirect('/tenant/complains');
     }
 
 
@@ -141,6 +155,28 @@ class TenantController extends Controller
 
         return redirect('tenant/profile');
     }
+
+
+
+    // public function Complainpost(Request $request)
+    // {
+        
+    //     return view('tenant.compalinsave');
+    // }
+
+    public function billReport(Request $request)
+
+     {
+
+         $bills = Bills::orderBy('id','desc')->get();
+
+         $prds = compact('bills');
+
+         return PDF::loadView('tenant.report', $prds)->stream();
+
+     }
+
+
 
     
 

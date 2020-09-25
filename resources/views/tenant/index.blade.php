@@ -50,25 +50,31 @@ Tenant Home
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Add Apartment</h5>
+                            <h5 class="modal-title">Add Complain</h5>
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="/admin/addApartment">
+                            
+                            
+                            <form method="POST" action="/tenant/complainsadd">
                                 @csrf
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <input type="text" name="name" placeholder="Apartment name" class="form-control"
+                                        <input type="text" name="userId" placeholder="userId" class="form-control"
                                             required />
                                     </li>
                                     <li class="list-group-item">
-                                        <input name="description" type="text" placeholder="Description"
+                                        <input type="text" name="unitId" placeholder="unitId" class="form-control"
+                                            required />
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input type="text" name="description" type="text" placeholder="description"
                                             class="form-control" required />
                                     </li>
 
                                     <li class="list-group-item">
-                                        <input type="text" name="notice" placeholder="Notice" class="form-control" />
+                                        <input type="text" name="isresolve" placeholder="isresolve" class="form-control" />
                                     </li>
                                     <li class="list-group-item d-flex justify-content-end">
                                         <button type="submit" class="btn btn-success ml-3">
@@ -88,6 +94,9 @@ Tenant Home
 
 
     </div>
+
+
+
 
     <!-- Cards -->
 

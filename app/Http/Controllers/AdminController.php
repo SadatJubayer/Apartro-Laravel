@@ -145,7 +145,7 @@ class AdminController extends Controller
 
     public function createApartment(Request $request)
     {
-        $apartment = new Apartment();
+
         $apartment->name = $request->name;
         $apartment->description = $request->description;
         $apartment->notice = $request->notice;
