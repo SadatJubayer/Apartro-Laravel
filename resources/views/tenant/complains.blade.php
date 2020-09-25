@@ -49,6 +49,16 @@ Complains
                     @endforeach
                 </tbody>
             </table>
+
+                                           <div class="modal-footer">
+                                            <form action="/tenant/complains" method="POST">
+                                                @csrf
+                                            
+                                                <button type="submit">
+                                                    Compalin Button
+                                                </button>
+                                            </form>
+                                        </div>
         </div>
     </div>
 

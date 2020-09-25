@@ -32,11 +32,17 @@ Route::get('/tenant/bills', 'TenantController@bills');
 Route::get('/tenant/visitors', 'TenantController@visitors');
 
 
- // Expenses
+ //Tenant  Expenses
  Route::get('/tenant/expenses', 'TenantController@expenses');
 
- //complain
+ //Tenant complain
  Route::get('/tenant/complains', 'TenantController@complainsIndex');
+ Route::post('/tenant/complains', 'TenantController@Complainpost');  //there is no working
+
+
+ //Tenant Profile
+ Route::get('/tenant/profile', 'TenantController@profile');
+
 
 
 });

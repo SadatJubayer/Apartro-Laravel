@@ -54,7 +54,7 @@
                         Account
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/admin/profile">My Profile</a>
+                        <a class="dropdown-item" href="/tenant/profile">My Profile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item bg-danger text-white" href="/logout">Logout</a>
                     </div>

@@ -101,4 +101,13 @@ class TenantController extends Controller
         //return view('tenant.complains', compact('complains'));
     }
 
+
+
+    public function profile(Request $request)
+    {
+        $user = User::where('id', $request->session()->get('id'))->first();
+
+        return view('tenant.profile')->with('user', $user);
+    }
+
 }
