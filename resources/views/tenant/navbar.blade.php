@@ -43,12 +43,8 @@
                  </li>
 
                
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/floors">Floors</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/units">Units</a>
-                </li>
+                
+               
                   
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

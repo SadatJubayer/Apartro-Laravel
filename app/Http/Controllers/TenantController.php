@@ -15,6 +15,7 @@ use App\Unit;
 use App\Complain;
 use App\Visitor;
 use App\Bills;
+use App\Tanents;
 
 class TenantController extends Controller
 {
@@ -27,8 +28,12 @@ class TenantController extends Controller
 
     public function usersIndex()
     {
-        $users = User::all();
-        return view('tenant.users')->with('users', $users);
+       // $users = User::all();
+        //return view('tenant.users')->with('users', $users);
+
+       
+        $Tanents = tanents::all();
+        return view('tenant.tenantusers')->with('tanents', $Tanents);
     }
 
     public function bills(Request $request)

@@ -37,7 +37,6 @@ Route::get('/tenant/visitors', 'TenantController@visitors');
 
  //Tenant complain
  Route::get('/tenant/complains', 'TenantController@complainsIndex');
- //Route::post('/tenant/complainsadd/{complain:id}', 'TenantController@Complainpost');  //there is no working
  Route::post('/tenant/addComplain', 'TenantController@addComplain');
 
 
@@ -45,6 +44,7 @@ Route::get('/tenant/visitors', 'TenantController@visitors');
  Route::get('/tenant/profile', 'TenantController@profile');
  Route::post('/tenant/profile', 'TenantController@updateProfile');
 
+ //Tenant Bill Report
  Route::get('/invoice', 'TenantController@billReport')->name('getReport');
 
 
