@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'validateUser' => \App\Http\Middleware\validateUser::class,
         'ownerAccess' => \App\Http\Middleware\AuthOwner::class,
         'employeeAccess' => \App\Http\Middleware\AuthEmployee::class,
+        'tanentAccess' => \App\Http\Middleware\AuthTenant::class,
     ];
 }
