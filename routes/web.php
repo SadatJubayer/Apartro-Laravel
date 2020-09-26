@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use arryvdh\DomPDF\Facade;
 
 
 // Index Route
@@ -64,4 +65,47 @@ Route::middleware(['adminAccess'])->group(function () {
     // Get PDF
     Route::get('/admin/getPDF', 'AdminController@getUnitReport');
     Route::get('/admin/getComplainsPDF', 'AdminController@getComplainsReport');
+});
+
+Route::middleware(['ownerAccess'])->group(function () {
+    Route::group(['prefix' => 'owner'], function () {
+        Route::get('/', 'ownerController@index')->name('ownerDashboard');
+        Route::post('/{complain:id}', 'ownerController@update')->name('complainUpdate');
+        Route::get('/units', 'Owner\unitController@index')->name('getUnits');
+        Route::get('/units/{unit:id}', 'Owner\unitController@edit')->name('editUnits');
+        Route::post('/units/{unit:id}', 'Owner\unitController@update')->name('updateUnits');
+        Route::get('/Managetanent', 'Owner\TanentController@index')->name('manageTanent');
+        Route::get('/tanent', 'Owner\TanentController@create')->name('createTanent');
+        Route::post('/tanent', 'Owner\TanentController@store')->name('storeTanents');
+        Route::get('/edit/{tanent:id}', 'Owner\TanentController@edit')->name('editTanents');
+        Route::post('/edit/{tanent:id}', 'Owner\TanentController@update')->name('updateTanents');
+        Route::post('/delete/{tanent:id}', 'Owner\TanentController@destroy')->name('deleteTanents');
+
+
+        Route::get('/tanentUser', 'TanentUserController@create')->name('createTanentsusers');
+        Route::post('/tanentUser', 'TanentUserController@store')->name('storeTanentsusers');
+        Route::get('/visitors', 'TanentUserController@index')->name('visitors');
+
+
+        Route::group(['prefix' => 'Bills'], function () {
+            Route::get('/manage', 'Backend\Tanent@index')->name('manageBills');
+        });
+
+        Route::group(['prefix' => 'expenses'], function () {
+            Route::get('/manage', 'Backend\Tanent@expense')->name('manageExpense');
+        });
+
+        Route::group(['prefix' => 'notices'], function () {
+            Route::get('/manage', 'Backend\NoticeController@index')->name('manageNotice');
+            Route::get('/create/{apartment:id}', 'Backend\NoticeController@create')->name('createNotice');
+            Route::post('/create/{apartment:id}', 'Backend\NoticeController@store')->name('storeNotice');
+        });
+
+        // Admin Profile
+
+        Route::get('/admin/profile', 'AdminController@profile')->name('adminProfile');
+        Route::post('/admin/profile', 'AdminController@updateProfile')->name('updateProfile');
+
+        Route::get('/invoice', 'Owner\unitController@create')->name('getReport');
+    });
 });

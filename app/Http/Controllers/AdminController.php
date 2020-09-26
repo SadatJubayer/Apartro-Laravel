@@ -47,7 +47,7 @@ class AdminController extends Controller
 
         return view('admin.index')->with('data', $data);
     }
-
+ 
 
     public function profile(Request $request)
     {
