@@ -37,7 +37,8 @@ Route::get('/tenant/visitors', 'TenantController@visitors');
 
  //Tenant complain
  Route::get('/tenant/complains', 'TenantController@complainsIndex');
- Route::post('/tenant/addComplain', 'TenantController@addComplain');
+// Route::post('/tenant/addComplain', 'TenantController@addComplain');
+ Route::post('/tenant/complainsadd', 'TenantController@addComplain');
 
 
  //Tenant Profile

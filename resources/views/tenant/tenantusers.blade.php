@@ -11,7 +11,7 @@ All Users
 
     <div class="card">
         <div class="card-header bg-dark text-white">
-            <h5 class="card-title text-center">All users list</h5>
+            <h5 class="card-title text-center">All tenants list</h5>
         </div>
         <div class="card-body">
             
