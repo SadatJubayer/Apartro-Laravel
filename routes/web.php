@@ -22,34 +22,31 @@ Route::get('/logout', 'AuthController@logout');
 Route::middleware(['tanentAccess'])->group(function () {
 
 
-   //Tenant Profile 
-Route::get('/tenant', 'TenantController@index');
-Route::get('/tenant/users', 'TenantController@usersIndex');
-Route::get('/tenant/notice', 'TenantController@notice');
-Route::get('/tenant/bills', 'TenantController@bills');
+    //Tenant Profile
+    Route::get('/tenant', 'TenantController@index');
+    Route::get('/tenant/users', 'TenantController@usersIndex');
+    Route::get('/tenant/notice', 'TenantController@notice');
+    Route::get('/tenant/bills', 'TenantController@bills');
 
-//Tenant vistor
-Route::get('/tenant/visitors', 'TenantController@visitors');
-
-
- //Tenant  Expenses
- Route::get('/tenant/expenses', 'TenantController@expenses');
-
- //Tenant complain
- Route::get('/tenant/complains', 'TenantController@complainsIndex');
-// Route::post('/tenant/addComplain', 'TenantController@addComplain');
- Route::post('/tenant/complainsadd', 'TenantController@addComplain');
+    //Tenant vistor
+    Route::get('/tenant/visitors', 'TenantController@visitors');
 
 
- //Tenant Profile
- Route::get('/tenant/profile', 'TenantController@profile');
- Route::post('/tenant/profile', 'TenantController@updateProfile');
+    //Tenant  Expenses
+    Route::get('/tenant/expenses', 'TenantController@expenses');
 
- //Tenant Bill Report
- Route::get('/invoice', 'TenantController@billReport')->name('getReport');
+    //Tenant complain
+    Route::get('/tenant/complains', 'TenantController@complainsIndex');
+    // Route::post('/tenant/addComplain', 'TenantController@addComplain');
+    Route::post('/tenant/complainsadd', 'TenantController@addComplain');
 
 
+    //Tenant Profile
+    Route::get('/tenant/profile', 'TenantController@profile');
+    Route::post('/tenant/profile', 'TenantController@updateProfile');
 
+    //Tenant Bill Report
+    Route::get('/invoice', 'TenantController@billReport')->name('getReport');
 });
 
 
@@ -102,7 +99,6 @@ Route::middleware(['adminAccess'])->group(function () {
     // Visitors
     Route::get('/admin/visitors', 'AdminController@visitors');
 
-<<<<<<< HEAD
     // Get PDF
     Route::get('/admin/getPDF', 'AdminController@getUnitReport');
     Route::get('/admin/getComplainsPDF', 'AdminController@getComplainsReport');
@@ -177,15 +173,3 @@ Route::middleware(['employeeAccess'])->group(function () {
     // report
     Route::get('/invoice', 'employeeController@billReport')->name('getReport');
 });
-=======
-
-
-
-
-    // Admin profile
-   
-
-
-
-});
->>>>>>> origin/mahmud
