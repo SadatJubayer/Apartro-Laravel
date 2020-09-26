@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use arryvdh\DomPDF\Facade;
 
-
 // Index Route
 Route::get('/', function () {
     return view('index');
@@ -108,4 +107,31 @@ Route::middleware(['ownerAccess'])->group(function () {
 
         Route::get('/invoice', 'Owner\unitController@create')->name('getReport');
     });
+});
+
+// emp
+Route::middleware(['employeeAccess'])->group(function () {
+    Route::get('/employee', 'employeeController@index');
+    // Visitors
+    Route::get('/employee/visitors', 'employeeController@visitors');
+    Route::post('/employee/visitors/new', 'employeeController@addVisitors');
+    // Expenses
+    Route::get('/employee/expenses', 'employeeController@expenses');
+    Route::post('/employee/expenses/new', 'employeeController@addExpenses');
+    // Bills
+    Route::get('/employee/bills', 'employeeController@bills');
+    Route::post('/employee/bills/new', 'employeeController@addBills');
+    // emp Profile
+    Route::get('/employee/profile', 'employeeController@profile');
+    Route::post('/employee/profile', 'employeeController@updateProfile');
+    // Complains
+    Route::get('/employee/complains', 'employeeController@complainsIndex');
+    Route::post('/employee/complains/resolve', 'employeeController@resolveComplain');
+    // users list
+    Route::get('/employee/users', 'employeeController@users');
+    // notices
+    Route::get('/employee/notices', 'employeeController@notices');
+    Route::post('/employee/notices/new', 'employeeController@addNotices');
+    // report
+    Route::get('/invoice', 'employeeController@billReport')->name('getReport');
 });
